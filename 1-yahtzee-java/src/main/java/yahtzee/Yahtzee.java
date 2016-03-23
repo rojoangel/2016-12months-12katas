@@ -20,7 +20,7 @@ public class Yahtzee {
         this.console.print("Category: Ones");
         roll(1, 2, 3, 4, 5);
         this.console.print("[1] Dice to re-run:");
-        this.console.print("Dice: D1:1 D2:5 D3:1 D4:2 D5:1");
+        this.notifier.notifyRolledDice(generateRolledDice());
     }
 
     private void roll(int... dice) {
@@ -30,4 +30,15 @@ public class Yahtzee {
         }
         this.notifier.notifyRolledDice(rolledDice);
     }
+
+    private Map<Integer, Integer> generateRolledDice() {
+        Map<Integer, Integer> rolledDice = new HashMap<Integer, Integer>();
+        rolledDice.put(1, 1);
+        rolledDice.put(2, 5);
+        rolledDice.put(3, 1);
+        rolledDice.put(4, 2);
+        rolledDice.put(5 ,1);
+        return rolledDice;
+    }
+
 }
