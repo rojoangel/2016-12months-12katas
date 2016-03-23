@@ -8,18 +8,26 @@ public class Yahtzee {
     private FakeConsole console;
     private DieRoller dieRoller;
     private ConsoleNotifier notifier;
+    private UserInputReader userInputReader;
 
-    public Yahtzee(FakeConsole console, DieRoller dieRoller, ConsoleNotifier notifier) {
+    public Yahtzee(
+            FakeConsole console,
+            DieRoller dieRoller,
+            ConsoleNotifier notifier,
+            UserInputReader userInputReader
+    ) {
 
         this.console = console;
         this.dieRoller = dieRoller;
         this.notifier = notifier;
+        this.userInputReader = userInputReader;
     }
 
     public void play() {
         this.console.print("Category: Ones");
         roll(1, 2, 3, 4, 5);
         this.console.print("[1] Dice to re-run:");
+        String diceToRoll = this.userInputReader.readLine();
         this.notifier.notifyRolledDice(generateRolledDice());
     }
 
