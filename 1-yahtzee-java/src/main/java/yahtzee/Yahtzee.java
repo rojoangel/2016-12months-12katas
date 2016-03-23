@@ -7,11 +7,13 @@ public class Yahtzee {
 
     private FakeConsole console;
     private DieRoller dieRoller;
+    private ConsoleNotifier notifier;
 
     public Yahtzee(FakeConsole console, DieRoller dieRoller) {
 
         this.console = console;
         this.dieRoller = dieRoller;
+        this.notifier = new ConsoleNotifier(console);
     }
 
     public void play() {
@@ -26,14 +28,6 @@ public class Yahtzee {
         for (int die : dice) {
             rolledDice.put(die, this.dieRoller.roll());
         }
-        notifyRolledDice(rolledDice);
-    }
-
-    private void notifyRolledDice(Map<Integer, Integer> rolledDice) {
-        StringBuilder formattedDice = new StringBuilder("Dice:");
-        for (int dieId : rolledDice.keySet()) {
-            formattedDice.append(" D").append(dieId).append(":").append(rolledDice.get(dieId));
-        }
-        this.console.print(formattedDice.toString());
+        this.notifier.notifyRolledDice(rolledDice);
     }
 }
