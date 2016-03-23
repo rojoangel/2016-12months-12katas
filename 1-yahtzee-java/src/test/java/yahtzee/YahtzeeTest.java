@@ -14,9 +14,10 @@ public class YahtzeeTest {
     @Test
     public void testGame(){
         FakeConsole console = new FakeConsole();
+        ConsoleNotifier notifier = new ConsoleNotifier(console);
         DieRoller dieRoller = mock(DieRoller.class);
         when(dieRoller.roll()).thenReturn(2, 4, 1, 6, 1);
-        Yahtzee yahtzee = new Yahtzee(console, dieRoller);
+        Yahtzee yahtzee = new Yahtzee(console, dieRoller, notifier);
         yahtzee.play();
 
         List<String> l = new ArrayList<String>();

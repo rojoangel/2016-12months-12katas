@@ -9,11 +9,11 @@ public class Yahtzee {
     private DieRoller dieRoller;
     private ConsoleNotifier notifier;
 
-    public Yahtzee(FakeConsole console, DieRoller dieRoller) {
+    public Yahtzee(FakeConsole console, DieRoller dieRoller, ConsoleNotifier notifier) {
 
         this.console = console;
         this.dieRoller = dieRoller;
-        this.notifier = new ConsoleNotifier(console);
+        this.notifier = notifier;
     }
 
     public void play() {
