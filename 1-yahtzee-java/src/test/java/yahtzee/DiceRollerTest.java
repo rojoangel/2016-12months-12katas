@@ -29,6 +29,31 @@ public class DiceRollerTest {
         assertEquals(generateExpectedRolledDice(), diceRoller.getRollResult());
     }
 
+    @Test
+    public void testRollsOnlyTheDesiredDiceKeepingThePreviousValueForTheOthers() throws Exception {
+
+        DieRoller dieRoller = mock(DieRoller.class);
+        when(dieRoller.roll())
+                .thenReturn(6)
+                .thenReturn(5)
+                .thenReturn(4)
+                .thenReturn(2)
+                .thenReturn(3)
+                .thenReturn(1)
+                .thenReturn(1)
+                .thenReturn(1);
+
+
+        DiceRoller diceRoller = new DiceRoller(dieRoller);
+
+        diceRoller.rollAll();
+
+        diceRoller.roll(1, 3, 5);
+
+        assertEquals(generateExpectedRolledDice(), diceRoller.getRollResult());
+
+    }
+
     private Map<Integer, Integer> generateExpectedRolledDice() {
         Map<Integer, Integer> rolledDice = new HashMap<Integer, Integer>();
         rolledDice.put(1, 1);

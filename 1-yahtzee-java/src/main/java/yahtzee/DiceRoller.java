@@ -9,7 +9,7 @@ public class DiceRoller {
     private Map<Integer, Integer> rollResult;
 
     public DiceRoller(DieRoller dieRoller) {
-
+        this.rollResult = new HashMap<Integer, Integer>();;
         this.dieRoller = dieRoller;
     }
 
@@ -18,7 +18,6 @@ public class DiceRoller {
     }
 
     public void roll(int... dice) {
-        this.rollResult = new HashMap<Integer, Integer>();
         for (int die : dice) {
             rollResult.put(die, this.dieRoller.roll());
         }
