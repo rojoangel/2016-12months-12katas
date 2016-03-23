@@ -17,9 +17,17 @@ public class Yahtzee {
         for (int i =0; i<5 ; i++) {
             rolled_dice[i] = this.dieRoller.roll();
         }
-        this.console.print("Dice: D1:" + rolled_dice[0] + " D2:" + rolled_dice[1] + " D3:" + rolled_dice[2] + " D4:" + rolled_dice[3] + " D5:" + rolled_dice[4]);
+        notifyRolledDice(rolled_dice);
         this.console.print("[1] Dice to re-run:");
 
         this.console.print("Dice: D1:1 D2:5 D3:1 D4:2 D5:1");
+    }
+
+    private void notifyRolledDice(int[] rolled_dice) {
+        StringBuilder formattedDice = new StringBuilder("Dice:");
+        for (int i = 0; i < rolled_dice.length; i++) {
+            formattedDice.append(" D").append(i + 1).append(":").append(rolled_dice[i]);
+        }
+        this.console.print(formattedDice.toString());
     }
 }
