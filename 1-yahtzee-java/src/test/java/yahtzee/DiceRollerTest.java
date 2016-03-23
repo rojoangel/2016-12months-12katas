@@ -12,7 +12,7 @@ import static org.mockito.Mockito.when;
 public class DiceRollerTest {
 
     @Test
-    public void testRoll() throws Exception {
+    public void testRollAll() throws Exception {
 
         DieRoller dieRoller = mock(DieRoller.class);
         when(dieRoller.roll())
@@ -24,7 +24,7 @@ public class DiceRollerTest {
 
         DiceRoller diceRoller = new DiceRoller(dieRoller);
 
-        diceRoller.roll(1, 2, 3, 4, 5);
+        diceRoller.rollAll();
 
         assertEquals(generateExpectedRolledDice(), diceRoller.getRollResult());
     }

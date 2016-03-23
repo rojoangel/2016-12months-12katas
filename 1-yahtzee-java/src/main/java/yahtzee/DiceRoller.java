@@ -13,6 +13,10 @@ public class DiceRoller {
         this.dieRoller = dieRoller;
     }
 
+    public void rollAll() {
+        this.roll(1, 2, 3, 4, 5);
+    }
+
     public void roll(int... dice) {
         this.rollResult = new HashMap<Integer, Integer>();
         for (int die : dice) {
