@@ -23,16 +23,7 @@ public class ConsoleNotifierTest {
 
     @Test
     public void testNotifyRolledDice() throws Exception {
-
-        Map<Die, Integer> rolledDice = new LinkedHashMap<Die, Integer>();
-        rolledDice.put(Die.D1, 2);
-        rolledDice.put(Die.D2, 4);
-        rolledDice.put(Die.D3, 1);
-        rolledDice.put(Die.D4, 6);
-        rolledDice.put(Die.D5 ,1);
-
-        consoleNotifier.notifyRolledDice(rolledDice);
-
+        consoleNotifier.notifyRolledDice(generateRolledDice());
         assertEquals(Collections.singletonList("Dice: D1:2 D2:4 D3:1 D4:6 D5:1"), console.getOutput());
     }
 
@@ -42,4 +33,15 @@ public class ConsoleNotifierTest {
         consoleNotifier.notifyUserToIntroduceDiceToRerun(rerunsSoFar);
         assertEquals(Collections.singletonList("[2] Dice to re-run:"), console.getOutput());
     }
+
+    private Map<Die, Integer> generateRolledDice() {
+        Map<Die, Integer> rolledDice = new LinkedHashMap<Die, Integer>();
+        rolledDice.put(Die.D1, 2);
+        rolledDice.put(Die.D2, 4);
+        rolledDice.put(Die.D3, 1);
+        rolledDice.put(Die.D4, 6);
+        rolledDice.put(Die.D5 ,1);
+        return rolledDice;
+    }
+
 }
