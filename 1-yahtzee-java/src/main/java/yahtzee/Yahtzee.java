@@ -40,11 +40,7 @@ public class Yahtzee {
         this.notifier.notifyCurrentCategory(category);
         roll(Die.D1, Die.D2, Die.D3, Die.D4, Die.D5);
         doReruns();
-        this.notifier.notifyCategoryScore(category, computeScore(category));
-    }
-
-    private int computeScore(Category category) {
-        return new DiceScorer(category).computeScore(lastRolledDice());
+        this.notifier.notifyCategoryScore(category, category.computeScore(lastRolledDice()));
     }
 
     private void doReruns() {
