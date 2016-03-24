@@ -1,6 +1,8 @@
 package yahtzee;
 
 
+import java.util.Map;
+
 public interface ScoresHistory {
 
     void annotateScore(Category category, int score);
@@ -8,4 +10,6 @@ public interface ScoresHistory {
     int maxScore(Category category);
 
     int finalScore();
+
+    Map<Category, Integer> maxScoresByCategory();
 }
