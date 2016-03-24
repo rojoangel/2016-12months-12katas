@@ -2,7 +2,8 @@ package yahtzee;
 
 public enum Category {
     Ones(1),
-    Twos(2);
+    Twos(2),
+    Threes(3);
 
     private final int value;
 
