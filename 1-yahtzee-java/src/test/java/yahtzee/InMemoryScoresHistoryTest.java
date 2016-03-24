@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class ScoresHistoryTest {
+public class InMemoryScoresHistoryTest {
 
     @Test
     public void testMaxScore() throws Exception {
