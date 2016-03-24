@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Yahtzee {
 
+    public static final int NUM_RERUNS = 2;
     private FakeConsole console;
     private ConsoleNotifier notifier;
     private UserInputReader userInputReader;
@@ -29,7 +30,7 @@ public class Yahtzee {
     }
 
     private void doReruns() {
-        for (int rerun = 1; rerun <= 2 ; rerun++) {
+        for (int rerun = 1; rerun <= NUM_RERUNS; rerun++) {
             this.console.print("[" + rerun + "] Dice to re-run:");
             roll(obtainDiceToRoll());
         }
