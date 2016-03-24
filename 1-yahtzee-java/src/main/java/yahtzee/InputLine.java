@@ -1,11 +1,23 @@
 package yahtzee;
 
-public class InputLine {
-    public InputLine(String userInput) {
+import java.util.ArrayList;
+import java.util.List;
 
+public class InputLine {
+
+    private String line;
+
+    public InputLine(String line) {
+        this.line = line;
     }
 
     public Die[] diceToRoll() {
-        return new Die[] {Die.D1, Die.D2, Die.D4};
+        String[] splittedUserInput = this.line.split(" ");
+        List<Die> userInputDice = new ArrayList<Die>();
+        for (String userEnteredDie : splittedUserInput) {
+            userInputDice.add(Die.valueOf(userEnteredDie));
+        }
+        return userInputDice.toArray(new Die[userInputDice.size()]);
+
     }
 }
