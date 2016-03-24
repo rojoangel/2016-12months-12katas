@@ -9,6 +9,7 @@ public class Yahtzee {
     private DieRoller dieRoller;
     private ConsoleNotifier notifier;
     private UserInputReader userInputReader;
+    private DiceRoller diceRoller;
 
     public Yahtzee(
             FakeConsole console,
@@ -21,6 +22,7 @@ public class Yahtzee {
         this.dieRoller = dieRoller;
         this.notifier = notifier;
         this.userInputReader = userInputReader;
+        this.diceRoller = new DiceRoller(this.dieRoller);
     }
 
     public void play() {
@@ -32,10 +34,8 @@ public class Yahtzee {
     }
 
     private void roll(int... dice) {
-        Map<Integer, Integer> rolledDice = new HashMap<Integer, Integer>();
-        for (int die : dice) {
-            rolledDice.put(die, this.dieRoller.roll());
-        }
+        this.diceRoller.roll(dice);
+        Map<Integer, Integer> rolledDice = diceRoller.getRollResult();
         this.notifier.notifyRolledDice(rolledDice);
     }
 
