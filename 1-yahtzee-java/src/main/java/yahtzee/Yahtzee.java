@@ -28,6 +28,9 @@ public class Yahtzee {
         roll(Die.D1, Die.D2, Die.D3, Die.D4, Die.D5);
         doReruns();
         this.console.print("Category Ones score: 4");
+        this.console.print("Category: Twos");
+        roll(Die.D1, Die.D2, Die.D3, Die.D4, Die.D5);
+        doReruns();
 
     }
 
