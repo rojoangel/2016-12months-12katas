@@ -15,6 +15,12 @@ public class DiceScorerTest {
         assertEquals(3, diceScorer.computeScore(generateRolledDice()));
     }
 
+    @Test
+    public void testComputesDiceScoreForTwos() throws Exception {
+        DiceScorer diceScorer = new DiceScorer(Category.Twos);
+        assertEquals(1, diceScorer.computeScore(generateRolledDice()));
+    }
+
     private Map<Die, Integer> generateRolledDice() {
         Map<Die, Integer> rolledDice = new HashMap<Die, Integer>();
         rolledDice.put(Die.D1, 1);

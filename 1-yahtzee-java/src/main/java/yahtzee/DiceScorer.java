@@ -12,7 +12,7 @@ public class DiceScorer {
     public int computeScore(Map<Die, Integer> dice) {
         int score = 0;
         for (Integer value : dice.values()) {
-            if (value.equals(1)) {
+            if (value.equals(category.getValue())) {
                 score++;
             }
         }
