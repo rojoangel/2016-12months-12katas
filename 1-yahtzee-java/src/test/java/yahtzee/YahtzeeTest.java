@@ -19,7 +19,9 @@ public class YahtzeeTest {
         when(dieRoller.roll()).thenReturn(2, 4, 1, 6, 1);
         UserInputReader userInputReader = mock(UserInputReader.class);
         when(userInputReader.readLine()).thenReturn("D1 D2 D4");
-        Yahtzee yahtzee = new Yahtzee(console, dieRoller, notifier, userInputReader);
+        DiceRoller diceRoller = new DiceRoller(dieRoller);
+
+        Yahtzee yahtzee = new Yahtzee(console, dieRoller, notifier, userInputReader, diceRoller);
         yahtzee.play();
 
         List<String> l = new ArrayList<String>();

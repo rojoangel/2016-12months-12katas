@@ -15,14 +15,15 @@ public class Yahtzee {
             FakeConsole console,
             DieRoller dieRoller,
             ConsoleNotifier notifier,
-            UserInputReader userInputReader
+            UserInputReader userInputReader,
+            DiceRoller diceRoller
     ) {
 
         this.console = console;
         this.dieRoller = dieRoller;
         this.notifier = notifier;
         this.userInputReader = userInputReader;
-        this.diceRoller = new DiceRoller(this.dieRoller);
+        this.diceRoller = diceRoller;
     }
 
     public void play() {
