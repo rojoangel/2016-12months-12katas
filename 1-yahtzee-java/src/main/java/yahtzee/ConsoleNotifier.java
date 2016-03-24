@@ -9,13 +9,13 @@ public class ConsoleNotifier {
         this.console = console;
     }
 
-    void notifyRolledDice(Map<Integer, Integer> rolledDice) {
+    void notifyRolledDice(Map<Die, Integer> rolledDice) {
         StringBuilder formattedDice = new StringBuilder("Dice:");
-        for (int dieId : rolledDice.keySet()) {
-            formattedDice.append(" D").
-                    append(dieId).
-                    append(":").
-                    append(rolledDice.get(dieId));
+        for (Die die : rolledDice.keySet()) {
+            formattedDice.append(" ")
+                    .append(die)
+                    .append(":")
+                    .append(rolledDice.get(die));
         }
         this.console.print(formattedDice.toString());
     }

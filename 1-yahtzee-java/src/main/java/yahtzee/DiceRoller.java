@@ -1,29 +1,29 @@
 package yahtzee;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class DiceRoller {
 
     private DieRoller dieRoller;
-    private Map<Integer, Integer> rollResult;
+    private Map<Die, Integer> rollResult;
 
     public DiceRoller(DieRoller dieRoller) {
-        this.rollResult = new HashMap<Integer, Integer>();;
+        this.rollResult = new LinkedHashMap<Die, Integer>();
         this.dieRoller = dieRoller;
     }
 
     public void rollAll() {
-        this.roll(1, 2, 3, 4, 5);
+        this.roll(Die.D1, Die.D2, Die.D3, Die.D4, Die.D5);
     }
 
-    public void roll(int... dice) {
-        for (int die : dice) {
+    public void roll(Die... dice) {
+        for (Die die : dice) {
             rollResult.put(die, this.dieRoller.roll());
         }
     }
 
-    public Map<Integer,Integer> getRollResult() {
+    public Map<Die, Integer> getRollResult() {
         return this.rollResult;
     }
 }
