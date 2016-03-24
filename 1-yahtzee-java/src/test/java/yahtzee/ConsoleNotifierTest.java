@@ -1,31 +1,95 @@
 package yahtzee;
 
+import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
 public class ConsoleNotifierTest {
 
+
+    private Console console;
+    private ConsoleNotifier consoleNotifier;
+
+    @Before
+    public void setUp() {
+        console = new FakeConsole();
+        consoleNotifier = new ConsoleNotifier(console);
+    }
+
     @Test
     public void testNotifyRolledDice() throws Exception {
-
-        Map<Integer, Integer> rolledDice = new HashMap<Integer, Integer>();
-        rolledDice.put(1, 2);
-        rolledDice.put(2, 4);
-        rolledDice.put(3, 1);
-        rolledDice.put(4, 6);
-        rolledDice.put(5 ,1);
-
-        Console console = new FakeConsole();
-        ConsoleNotifier consoleNotifier = new ConsoleNotifier(console);
-
-        consoleNotifier.notifyRolledDice(rolledDice);
-
+        consoleNotifier.notifyRolledDice(generateRolledDice());
         assertEquals(Collections.singletonList("Dice: D1:2 D2:4 D3:1 D4:6 D5:1"), console.getOutput());
+    }
+
+    @Test
+    public void testNotifyUserToIntroduceDiceToRerun() throws Exception {
+        int rerunsSoFar= 1;
+        consoleNotifier.notifyUserToIntroduceDiceToRerun(rerunsSoFar);
+        assertEquals(Collections.singletonList("[2] Dice to re-run:"), console.getOutput());
+    }
+
+    @Test
+    public void testNotifyCurrentCategoryForOnes() throws Exception {
+        consoleNotifier.notifyCurrentCategory(Category.Ones);
+        assertEquals(Collections.singletonList("Category: Ones"), console.getOutput());
+    }
+
+    @Test
+    public void testNotifyCurrentCategoryForTwos() throws Exception {
+        consoleNotifier.notifyCurrentCategory(Category.Twos);
+        assertEquals(Collections.singletonList("Category: Twos"), console.getOutput());
+    }
+
+    @Test
+    public void testNotifyCategoryScoreForOnes() throws Exception {
+        int score = 2;
+        consoleNotifier.notifyCategoryScore(Category.Ones, score);
+        assertEquals(Collections.singletonList("Category Ones score: " + score), console.getOutput());
+    }
+
+    @Test
+    public void testNotifyCategoryScoreForTwos() throws Exception {
+        int score = 5;
+        consoleNotifier.notifyCategoryScore(Category.Twos, score);
+        assertEquals(Collections.singletonList("Category Twos score: " + score), console.getOutput());
+    }
+
+    @Test
+    public void testNotifyGameScore() throws Exception {
+
+        Map<Category, Integer> maxScoresByCategory = generateMaxScoresByCategory();
+        int finalScore = 10;
+
+        consoleNotifier.notifyGameScore(maxScoresByCategory, finalScore);
+        assertEquals(Arrays.asList(
+                "Yahtzee score",
+                "Ones: 3",
+                "Twos: 5",
+                "Threes: 2",
+                "Final score: 10"
+                ),
+                console.getOutput());
+    }
+
+    private Map<Die, Integer> generateRolledDice() {
+        Map<Die, Integer> rolledDice = new LinkedHashMap<Die, Integer>();
+        rolledDice.put(Die.D1, 2);
+        rolledDice.put(Die.D2, 4);
+        rolledDice.put(Die.D3, 1);
+        rolledDice.put(Die.D4, 6);
+        rolledDice.put(Die.D5 ,1);
+        return rolledDice;
+    }
+
+    private Map<Category, Integer> generateMaxScoresByCategory() {
+        Map<Category, Integer> maxScoresByCategory = new LinkedHashMap<Category, Integer>();
+        maxScoresByCategory.put(Category.Ones, 3);
+        maxScoresByCategory.put(Category.Twos, 5);
+        maxScoresByCategory.put(Category.Threes, 2);
+        return maxScoresByCategory;
     }
 }

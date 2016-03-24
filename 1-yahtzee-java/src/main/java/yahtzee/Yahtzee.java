@@ -1,52 +1,69 @@
 package yahtzee;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Yahtzee {
 
-    private FakeConsole console;
-    private DieRoller dieRoller;
+    public static final int NUM_RERUNS = 2;
     private ConsoleNotifier notifier;
     private UserInputReader userInputReader;
+    private DiceRoller diceRoller;
+    private ScoresHistory scoresHistory;
 
     public Yahtzee(
-            FakeConsole console,
-            DieRoller dieRoller,
             ConsoleNotifier notifier,
-            UserInputReader userInputReader
+            UserInputReader userInputReader,
+            DiceRoller diceRoller,
+            ScoresHistory scoresHistory
     ) {
-
-        this.console = console;
-        this.dieRoller = dieRoller;
         this.notifier = notifier;
         this.userInputReader = userInputReader;
+        this.diceRoller = diceRoller;
+        this.scoresHistory = scoresHistory;
     }
 
     public void play() {
-        this.console.print("Category: Ones");
-        roll(1, 2, 3, 4, 5);
-        this.console.print("[1] Dice to re-run:");
-        String diceToRoll = this.userInputReader.readLine();
-        this.notifier.notifyRolledDice(generateRolledDice());
+        playAllCategories();
+        summarizeScores();
     }
 
-    private void roll(int... dice) {
-        Map<Integer, Integer> rolledDice = new HashMap<Integer, Integer>();
-        for (int die : dice) {
-            rolledDice.put(die, this.dieRoller.roll());
+    private void playAllCategories() {
+        for (Category category : Category.values()) {
+            playCategory(category);
         }
-        this.notifier.notifyRolledDice(rolledDice);
     }
 
-    private Map<Integer, Integer> generateRolledDice() {
-        Map<Integer, Integer> rolledDice = new HashMap<Integer, Integer>();
-        rolledDice.put(1, 1);
-        rolledDice.put(2, 5);
-        rolledDice.put(3, 1);
-        rolledDice.put(4, 2);
-        rolledDice.put(5 ,1);
-        return rolledDice;
+    private void playCategory(Category category) {
+        this.notifier.notifyCurrentCategory(category);
+        roll(Die.values());
+        doReruns();
+        int score = category.computeScore(lastRolledDice());
+        this.scoresHistory.annotateScore(category, score);
+        this.notifier.notifyCategoryScore(category, score);
     }
 
+    private void summarizeScores() {
+        this.notifier.notifyGameScore(scoresHistory.maxScoresByCategory(), scoresHistory.finalScore());
+    }
+
+    private void doReruns() {
+        for (int rerunsSoFar = 0; rerunsSoFar < NUM_RERUNS; rerunsSoFar++) {
+            this.notifier.notifyUserToIntroduceDiceToRerun(rerunsSoFar);
+            roll(obtainDiceToRoll());
+        }
+    }
+
+    private Die[] obtainDiceToRoll() {
+        InputLine inputLine = new InputLine(this.userInputReader.readLine());
+        return inputLine.diceToRoll();
+    }
+
+    private void roll(Die... dice) {
+        this.diceRoller.roll(dice);
+        this.notifier.notifyRolledDice(lastRolledDice());
+    }
+
+    private Map<Die, Integer> lastRolledDice() {
+        return diceRoller.getRollResult();
+    }
 }
