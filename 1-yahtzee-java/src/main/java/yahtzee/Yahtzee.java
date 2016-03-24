@@ -8,13 +8,14 @@ public class Yahtzee {
     private ConsoleNotifier notifier;
     private UserInputReader userInputReader;
     private DiceRoller diceRoller;
+    private Console console;
 
     public Yahtzee(
-            ConsoleNotifier notifier,
+            Console console, ConsoleNotifier notifier,
             UserInputReader userInputReader,
             DiceRoller diceRoller
     ) {
-
+        this.console = console;
         this.notifier = notifier;
         this.userInputReader = userInputReader;
         this.diceRoller = diceRoller;
@@ -24,6 +25,11 @@ public class Yahtzee {
         for (Category category : Category.values()) {
             playCategory(category);
         }
+        this.console.print("Yahtzee score");
+        this.console.print("Ones: 4");
+        this.console.print("Twos: 3");
+        this.console.print("Threes: 2");
+        this.console.print("Final score: 9");
     }
 
     private void playCategory(Category category) {

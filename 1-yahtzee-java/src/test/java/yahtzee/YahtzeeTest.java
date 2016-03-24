@@ -34,7 +34,7 @@ public class YahtzeeTest {
                                                     "D1 D2 D4");
         DiceRoller diceRoller = new DiceRoller(dieRoller);
 
-        Yahtzee yahtzee = new Yahtzee(notifier, userInputReader, diceRoller);
+        Yahtzee yahtzee = new Yahtzee(console, notifier, userInputReader, diceRoller);
         yahtzee.play();
 
         List<String> outputLines = new ArrayList<String>();
@@ -59,6 +59,11 @@ public class YahtzeeTest {
         outputLines.add("[2] Dice to re-run:");
         outputLines.add("Dice: D1:6 D2:2 D3:3 D4:4 D5:3");
         outputLines.add("Category Threes score: 2");
+        outputLines.add("Yahtzee score");
+        outputLines.add("Ones: 4");
+        outputLines.add("Twos: 3");
+        outputLines.add("Threes: 2");
+        outputLines.add("Final score: 9");
         assertEquals(outputLines, console.getOutput());
     }
 
