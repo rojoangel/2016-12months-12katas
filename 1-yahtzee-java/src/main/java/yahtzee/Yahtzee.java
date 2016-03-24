@@ -27,6 +27,8 @@ public class Yahtzee {
         roll(Die.D1, Die.D2, Die.D3, Die.D4, Die.D5);
         this.console.print("[1] Dice to re-run:");
         roll(obtainDiceToRoll());
+        this.console.print("[2] Dice to re-run:");
+        roll(obtainDiceToRoll());
     }
 
     private Die[] obtainDiceToRoll() {
