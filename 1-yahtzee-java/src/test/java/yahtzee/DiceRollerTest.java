@@ -18,7 +18,7 @@ public class DiceRollerTest {
 
         DiceRoller diceRoller = new DiceRoller(dieRoller);
 
-        diceRoller.rollAll();
+        diceRoller.roll(Die.D1, Die.D2, Die.D3, Die.D4, Die.D5);
 
         assertEquals(generateExpectedRolledDice(), diceRoller.getRollResult());
     }
@@ -30,7 +30,7 @@ public class DiceRollerTest {
 
         DiceRoller diceRoller = new DiceRoller(dieRoller);
 
-        diceRoller.rollAll();
+        diceRoller.roll(Die.D1, Die.D2, Die.D3, Die.D4, Die.D5);
 
         diceRoller.roll(Die.D1, Die.D3, Die.D5);
 

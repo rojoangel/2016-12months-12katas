@@ -13,10 +13,6 @@ public class DiceRoller {
         this.dieRoller = dieRoller;
     }
 
-    public void rollAll() {
-        this.roll(Die.D1, Die.D2, Die.D3, Die.D4, Die.D5);
-    }
-
     public void roll(Die... dice) {
         for (Die die : dice) {
             rollResult.put(die, this.dieRoller.roll());
