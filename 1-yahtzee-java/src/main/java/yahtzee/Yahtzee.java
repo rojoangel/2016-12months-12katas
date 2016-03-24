@@ -1,9 +1,6 @@
 package yahtzee;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.SortedMap;
+import java.util.*;
 
 public class Yahtzee {
 
@@ -29,8 +26,13 @@ public class Yahtzee {
         this.console.print("Category: Ones");
         roll(Die.D1, Die.D2, Die.D3, Die.D4, Die.D5);
         this.console.print("[1] Dice to re-run:");
-        String diceToRoll = this.userInputReader.readLine();
-        this.notifier.notifyRolledDice(generateRolledDice());
+        String userInput = this.userInputReader.readLine();
+        String[] splittedUserInput = userInput.split(" ");
+        List<Die> diceToRoll = new ArrayList<Die>();
+        for (String userEnteredDie : splittedUserInput) {
+            diceToRoll.add(Die.valueOf(userEnteredDie));
+        }
+        roll(diceToRoll.toArray(new Die[diceToRoll.size()]));
     }
 
     private void roll(Die... dice) {
@@ -38,15 +40,4 @@ public class Yahtzee {
         Map<Die, Integer> rolledDice = diceRoller.getRollResult();
         this.notifier.notifyRolledDice(rolledDice);
     }
-
-    private Map<Die, Integer> generateRolledDice() {
-        Map<Die, Integer> rolledDice = new LinkedHashMap<Die, Integer>();
-        rolledDice.put(Die.D1, 1);
-        rolledDice.put(Die.D2, 5);
-        rolledDice.put(Die.D3, 1);
-        rolledDice.put(Die.D4, 2);
-        rolledDice.put(Die.D5 ,1);
-        return rolledDice;
-    }
-
 }

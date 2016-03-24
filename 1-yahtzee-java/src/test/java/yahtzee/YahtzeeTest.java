@@ -16,7 +16,7 @@ public class YahtzeeTest {
         FakeConsole console = new FakeConsole();
         ConsoleNotifier notifier = new ConsoleNotifier(console);
         DieRoller dieRoller = mock(DieRoller.class);
-        when(dieRoller.roll()).thenReturn(2, 4, 1, 6, 1);
+        when(dieRoller.roll()).thenReturn(2, 4, 1, 6, 1, 1, 5, 2);
         UserInputReader userInputReader = mock(UserInputReader.class);
         when(userInputReader.readLine()).thenReturn("D1 D2 D4");
         DiceRoller diceRoller = new DiceRoller(dieRoller);
