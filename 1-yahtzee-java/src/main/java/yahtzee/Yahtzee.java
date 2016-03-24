@@ -27,11 +27,11 @@ public class Yahtzee {
         this.notifier.notifyCurrentCategory(Category.Ones);
         roll(Die.D1, Die.D2, Die.D3, Die.D4, Die.D5);
         doReruns();
-        this.console.print("Category Ones score: " + computeScore(Category.Ones));
+        this.notifier.notifyCategoryScore(Category.Ones, computeScore(Category.Ones));
         this.notifier.notifyCurrentCategory(Category.Twos);
         roll(Die.D1, Die.D2, Die.D3, Die.D4, Die.D5);
         doReruns();
-        this.console.print("Category Twos score: " + computeScore(Category.Twos));
+        this.notifier.notifyCategoryScore(Category.Twos, computeScore(Category.Twos));
     }
 
     private int computeScore(Category category) {
