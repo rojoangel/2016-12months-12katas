@@ -10,6 +10,12 @@ public class DiceScorer {
     }
 
     public int computeScore(Map<Die, Integer> dice) {
-        return 3;
+        int score = 0;
+        for (Integer value : dice.values()) {
+            if (value.equals(1)) {
+                score++;
+            }
+        }
+        return score;
     }
 }
