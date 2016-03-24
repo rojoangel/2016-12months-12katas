@@ -27,4 +27,14 @@ public class ConsoleNotifierTest {
 
         assertEquals(Collections.singletonList("Dice: D1:2 D2:4 D3:1 D4:6 D5:1"), console.getOutput());
     }
+
+    @Test
+    public void testNotifyUserToIntroduceDiceToRerun() throws Exception {
+        Console console = new FakeConsole();
+        ConsoleNotifier consoleNotifier = new ConsoleNotifier(console);
+
+        int rerunsSoFar= 1;
+        consoleNotifier.notifyUserToIntroduceDiceToRerun(rerunsSoFar);
+        assertEquals(Collections.singletonList("[2] Dice to re-run:"), console.getOutput());
+    }
 }

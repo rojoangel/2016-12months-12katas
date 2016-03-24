@@ -30,8 +30,8 @@ public class Yahtzee {
     }
 
     private void doReruns() {
-        for (int rerun = 1; rerun <= NUM_RERUNS; rerun++) {
-            this.console.print("[" + rerun + "] Dice to re-run:");
+        for (int rerunsSoFar = 0; rerunsSoFar < NUM_RERUNS; rerunsSoFar++) {
+            this.notifier.notifyUserToIntroduceDiceToRerun(rerunsSoFar);
             roll(obtainDiceToRoll());
         }
     }

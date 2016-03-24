@@ -19,4 +19,9 @@ public class ConsoleNotifier {
         }
         this.console.print(formattedDice.toString());
     }
+
+    public void notifyUserToIntroduceDiceToRerun(int rerunsSoFar) {
+        this.console.print("[" + (rerunsSoFar + 1) + "] Dice to re-run:");
+
+    }
 }
