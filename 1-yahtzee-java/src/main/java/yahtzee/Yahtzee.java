@@ -8,15 +8,13 @@ public class Yahtzee {
     private ConsoleNotifier notifier;
     private UserInputReader userInputReader;
     private DiceRoller diceRoller;
-    private Console console;
     private ScoresHistory scoresHistory;
 
     public Yahtzee(
-            Console console, ConsoleNotifier notifier,
+            ConsoleNotifier notifier,
             UserInputReader userInputReader,
             DiceRoller diceRoller
     ) {
-        this.console = console;
         this.notifier = notifier;
         this.userInputReader = userInputReader;
         this.diceRoller = diceRoller;

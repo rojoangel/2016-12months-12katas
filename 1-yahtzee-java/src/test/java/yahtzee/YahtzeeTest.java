@@ -34,7 +34,7 @@ public class YahtzeeTest {
                                                     "D1 D2 D4");
         DiceRoller diceRoller = new DiceRoller(dieRoller);
 
-        Yahtzee yahtzee = new Yahtzee(console, notifier, userInputReader, diceRoller);
+        Yahtzee yahtzee = new Yahtzee(notifier, userInputReader, diceRoller);
         yahtzee.play();
 
         List<String> outputLines = new ArrayList<String>();
