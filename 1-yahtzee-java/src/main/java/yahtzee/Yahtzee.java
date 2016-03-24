@@ -31,12 +31,15 @@ public class Yahtzee {
     }
 
     private void summarizeScores() {
-        this.console.print("Yahtzee score");
-        for (Category category : Category.values()) {
-            this.console.print(category + ": " + this.scoresHistory.maxScore(category));
+        this.notifier.notifyGameScore(maxScoresByCategory(), scoresHistory.finalScore());
+    }
 
+    private Map<Category, Integer> maxScoresByCategory() {
+        Map<Category, Integer> maxScoresByCategory = new LinkedHashMap<Category, Integer>();
+        for (Category category : Category.values()) {
+            maxScoresByCategory.put(category, scoresHistory.maxScore(category));
         }
-        this.console.print("Final score: " + this.scoresHistory.finalScore());
+        return maxScoresByCategory;
     }
 
     private void playCategory(Category category) {
