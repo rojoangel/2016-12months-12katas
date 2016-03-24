@@ -63,7 +63,7 @@ public class Yahtzee {
     }
 
     private void rollAllDice() {
-        roll(Die.D1, Die.D2, Die.D3, Die.D4, Die.D5);
+        roll(Die.values());
     }
 
     private void showCategory(Category category) {
