@@ -9,7 +9,7 @@ public class Yahtzee {
     private UserInputReader userInputReader;
     private DiceRoller diceRoller;
     private Console console;
-    private Map<Category, Integer> scoresHistory;
+    private ScoresHistory scoresHistory;
 
     public Yahtzee(
             Console console, ConsoleNotifier notifier,
@@ -20,7 +20,7 @@ public class Yahtzee {
         this.notifier = notifier;
         this.userInputReader = userInputReader;
         this.diceRoller = diceRoller;
-        this.scoresHistory = new LinkedHashMap<Category, Integer>();
+        this.scoresHistory = new ScoresHistory();
     }
 
     public void play() {
@@ -32,10 +32,11 @@ public class Yahtzee {
 
     private void summarizeScores() {
         this.console.print("Yahtzee score");
-        this.console.print(Category.Ones + ": " + this.scoresHistory.get(Category.Ones));
-        this.console.print(Category.Twos + ": " + this.scoresHistory.get(Category.Twos));
-        this.console.print(Category.Threes + ": " + this.scoresHistory.get(Category.Threes));
-        this.console.print("Final score: 9");
+        for (Category category : Category.values()) {
+            this.console.print(category + ": " + this.scoresHistory.maxScore(category));
+
+        }
+        this.console.print("Final score: " + this.scoresHistory.finalScore());
     }
 
     private void playCategory(Category category) {
@@ -48,7 +49,7 @@ public class Yahtzee {
     }
 
     private void anotateScore(Category category, int score) {
-        this.scoresHistory.put(category, score);
+        this.scoresHistory.annotateScore(category, score);
     }
 
     private void doReruns() {
