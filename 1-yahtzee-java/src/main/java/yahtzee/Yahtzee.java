@@ -1,25 +1,52 @@
 package yahtzee;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Yahtzee {
 
     private FakeConsole console;
     private DieRoller dieRoller;
+    private ConsoleNotifier notifier;
+    private UserInputReader userInputReader;
 
-    public Yahtzee(FakeConsole console, DieRoller dieRoller) {
+    public Yahtzee(
+            FakeConsole console,
+            DieRoller dieRoller,
+            ConsoleNotifier notifier,
+            UserInputReader userInputReader
+    ) {
 
         this.console = console;
         this.dieRoller = dieRoller;
+        this.notifier = notifier;
+        this.userInputReader = userInputReader;
     }
 
     public void play() {
         this.console.print("Category: Ones");
-        int[] dice = new int[5];
-        for (int i =0; i<5 ; i++) {
-            dice[i] = this.dieRoller.roll();
-        }
-        this.console.print("Dice: D1:" + dice[0] + " D2:" + dice[1] + " D3:" + dice[2] + " D4:" + dice[3] + " D5:" + dice[4]);
+        roll(1, 2, 3, 4, 5);
         this.console.print("[1] Dice to re-run:");
-
-        this.console.print("Dice: D1:1 D2:5 D3:1 D4:2 D5:1");
+        String diceToRoll = this.userInputReader.readLine();
+        this.notifier.notifyRolledDice(generateRolledDice());
     }
+
+    private void roll(int... dice) {
+        Map<Integer, Integer> rolledDice = new HashMap<Integer, Integer>();
+        for (int die : dice) {
+            rolledDice.put(die, this.dieRoller.roll());
+        }
+        this.notifier.notifyRolledDice(rolledDice);
+    }
+
+    private Map<Integer, Integer> generateRolledDice() {
+        Map<Integer, Integer> rolledDice = new HashMap<Integer, Integer>();
+        rolledDice.put(1, 1);
+        rolledDice.put(2, 5);
+        rolledDice.put(3, 1);
+        rolledDice.put(4, 2);
+        rolledDice.put(5 ,1);
+        return rolledDice;
+    }
+
 }
