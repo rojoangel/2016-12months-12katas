@@ -5,19 +5,16 @@ import java.util.*;
 public class Yahtzee {
 
     public static final int NUM_RERUNS = 2;
-    private FakeConsole console;
     private ConsoleNotifier notifier;
     private UserInputReader userInputReader;
     private DiceRoller diceRoller;
 
     public Yahtzee(
-            FakeConsole console,
             ConsoleNotifier notifier,
             UserInputReader userInputReader,
             DiceRoller diceRoller
     ) {
 
-        this.console = console;
         this.notifier = notifier;
         this.userInputReader = userInputReader;
         this.diceRoller = diceRoller;
