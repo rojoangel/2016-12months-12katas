@@ -9,6 +9,7 @@ public class Yahtzee {
     private UserInputReader userInputReader;
     private DiceRoller diceRoller;
     private Console console;
+    private Map<Category, Integer> scoresHistory;
 
     public Yahtzee(
             Console console, ConsoleNotifier notifier,
@@ -19,6 +20,7 @@ public class Yahtzee {
         this.notifier = notifier;
         this.userInputReader = userInputReader;
         this.diceRoller = diceRoller;
+        this.scoresHistory = new LinkedHashMap<Category, Integer>();
     }
 
     public void play() {
@@ -30,9 +32,9 @@ public class Yahtzee {
 
     private void summarizeScores() {
         this.console.print("Yahtzee score");
-        this.console.print("Ones: 4");
-        this.console.print("Twos: 3");
-        this.console.print("Threes: 2");
+        this.console.print(Category.Ones + ": " + this.scoresHistory.get(Category.Ones));
+        this.console.print(Category.Twos + ": " + this.scoresHistory.get(Category.Twos));
+        this.console.print(Category.Threes + ": " + this.scoresHistory.get(Category.Threes));
         this.console.print("Final score: 9");
     }
 
@@ -40,7 +42,13 @@ public class Yahtzee {
         this.notifier.notifyCurrentCategory(category);
         roll(Die.D1, Die.D2, Die.D3, Die.D4, Die.D5);
         doReruns();
-        this.notifier.notifyCategoryScore(category, category.computeScore(lastRolledDice()));
+        int score = category.computeScore(lastRolledDice());
+        anotateScore(category, score);
+        this.notifier.notifyCategoryScore(category, score);
+    }
+
+    private void anotateScore(Category category, int score) {
+        this.scoresHistory.put(category, score);
     }
 
     private void doReruns() {
