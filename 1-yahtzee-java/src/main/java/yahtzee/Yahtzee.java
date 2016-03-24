@@ -25,6 +25,10 @@ public class Yahtzee {
     public void play() {
         this.console.print("Category: Ones");
         roll(Die.D1, Die.D2, Die.D3, Die.D4, Die.D5);
+        doReruns();
+    }
+
+    private void doReruns() {
         this.console.print("[1] Dice to re-run:");
         roll(obtainDiceToRoll());
         this.console.print("[2] Dice to re-run:");
