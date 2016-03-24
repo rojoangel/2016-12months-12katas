@@ -11,7 +11,6 @@ public class FakeConsole implements Console {
          lines.add(line);
     }
 
-    @Override
     public List<String> getOutput() {
         return lines;
     }
