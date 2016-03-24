@@ -33,7 +33,7 @@ public class YahtzeeTest {
                                                     "D1 D2 D3 D4 D5",
                                                     "D1 D2 D4");
         DiceRoller diceRoller = new DiceRoller(dieRoller);
-        ScoresHistory scoresHistory = new ScoresHistory();
+        ScoresHistory scoresHistory = new InMemoryScoresHistory();
         Yahtzee yahtzee = new Yahtzee(notifier, userInputReader, diceRoller, scoresHistory);
         yahtzee.play();
 

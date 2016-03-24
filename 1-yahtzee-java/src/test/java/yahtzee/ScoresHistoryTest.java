@@ -8,7 +8,7 @@ public class ScoresHistoryTest {
 
     @Test
     public void testMaxScore() throws Exception {
-        ScoresHistory history = new ScoresHistory();
+        InMemoryScoresHistory history = new InMemoryScoresHistory();
 
         history.annotateScore(Category.Ones, 3);
         history.annotateScore(Category.Twos, 2);

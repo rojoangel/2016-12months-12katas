@@ -1,26 +1,11 @@
 package yahtzee;
 
-import com.google.common.collect.LinkedListMultimap;
-import com.google.common.collect.Multimap;
 
-import java.util.Collections;
+public interface ScoresHistory {
 
-public class ScoresHistory {
-    Multimap<Category, Integer> scoresHistory = LinkedListMultimap.create();
+    void annotateScore(Category category, int score);
 
-    public void annotateScore(Category category, int score) {
-        this.scoresHistory.put(category, score);
-    }
+    int maxScore(Category category);
 
-    public int maxScore(Category category) {
-        return Collections.max(this.scoresHistory.get(category));
-    }
-
-    public int finalScore() {
-        int finalScore = 0;
-        for (Category category : Category.values()) {
-            finalScore += this.maxScore(category);
-        }
-        return finalScore;
-    }
+    int finalScore();
 }
