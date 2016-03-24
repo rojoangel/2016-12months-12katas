@@ -24,14 +24,16 @@ public class Yahtzee {
     }
 
     public void play() {
-        this.notifier.notifyCurrentCategory(Category.Ones);
+        for (Category category : Category.values()) {
+            playCategory(category);
+        }
+    }
+
+    private void playCategory(Category category) {
+        this.notifier.notifyCurrentCategory(category);
         roll(Die.D1, Die.D2, Die.D3, Die.D4, Die.D5);
         doReruns();
-        this.notifier.notifyCategoryScore(Category.Ones, computeScore(Category.Ones));
-        this.notifier.notifyCurrentCategory(Category.Twos);
-        roll(Die.D1, Die.D2, Die.D3, Die.D4, Die.D5);
-        doReruns();
-        this.notifier.notifyCategoryScore(Category.Twos, computeScore(Category.Twos));
+        this.notifier.notifyCategoryScore(category, computeScore(category));
     }
 
     private int computeScore(Category category) {
