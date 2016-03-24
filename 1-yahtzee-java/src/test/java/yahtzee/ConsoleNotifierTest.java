@@ -3,9 +3,7 @@ package yahtzee;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -60,6 +58,23 @@ public class ConsoleNotifierTest {
         assertEquals(Collections.singletonList("Category Twos score: " + score), console.getOutput());
     }
 
+    @Test
+    public void testNotifyGameScore() throws Exception {
+
+        Map<Category, Integer> maxScoresByCategory = generateMaxScoresByCategory();
+        int finalScore = 10;
+
+        consoleNotifier.notifyGameScore(maxScoresByCategory, finalScore);
+        assertEquals(Arrays.asList(
+                "Yahtzee score",
+                "Ones: 3",
+                "Twos: 5",
+                "Threes: 2",
+                "Final score: 10"
+                ),
+                console.getOutput());
+    }
+
     private Map<Die, Integer> generateRolledDice() {
         Map<Die, Integer> rolledDice = new LinkedHashMap<Die, Integer>();
         rolledDice.put(Die.D1, 2);
@@ -70,4 +85,11 @@ public class ConsoleNotifierTest {
         return rolledDice;
     }
 
+    private Map<Category, Integer> generateMaxScoresByCategory() {
+        Map<Category, Integer> maxScoresByCategory = new LinkedHashMap<Category, Integer>();
+        maxScoresByCategory.put(Category.Ones, 3);
+        maxScoresByCategory.put(Category.Twos, 5);
+        maxScoresByCategory.put(Category.Threes, 2);
+        return maxScoresByCategory;
+    }
 }

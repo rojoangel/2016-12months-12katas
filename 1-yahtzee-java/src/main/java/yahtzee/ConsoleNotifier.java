@@ -32,4 +32,14 @@ public class ConsoleNotifier {
     public void notifyCategoryScore(Category category, int score) {
         this.console.print("Category " + category + " score: " + score);
     }
+
+    public void notifyGameScore(Map<Category, Integer> maxScoresByCategory, int finalScore) {
+        this.console.print("Yahtzee score");
+        for (Category category : Category.values()) {
+            this.console.print(category + ": " + maxScoresByCategory.get(category));
+
+        }
+        this.console.print("Final score: " + finalScore);
+
+    }
 }
