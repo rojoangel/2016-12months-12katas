@@ -6,21 +6,18 @@ import java.util.Map;
 public class Yahtzee {
 
     private FakeConsole console;
-    private DieRoller dieRoller;
     private ConsoleNotifier notifier;
     private UserInputReader userInputReader;
     private DiceRoller diceRoller;
 
     public Yahtzee(
             FakeConsole console,
-            DieRoller dieRoller,
             ConsoleNotifier notifier,
             UserInputReader userInputReader,
             DiceRoller diceRoller
     ) {
 
         this.console = console;
-        this.dieRoller = dieRoller;
         this.notifier = notifier;
         this.userInputReader = userInputReader;
         this.diceRoller = diceRoller;
