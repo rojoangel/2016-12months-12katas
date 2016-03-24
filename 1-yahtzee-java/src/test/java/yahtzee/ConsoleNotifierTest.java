@@ -34,6 +34,12 @@ public class ConsoleNotifierTest {
         assertEquals(Collections.singletonList("[2] Dice to re-run:"), console.getOutput());
     }
 
+    @Test
+    public void testNotifyCurrentCategoryForOnes() throws Exception {
+        consoleNotifier.notifyCurrentCategory(Category.Ones);
+        assertEquals(Collections.singletonList("Category: Ones"), console.getOutput());
+    }
+
     private Map<Die, Integer> generateRolledDice() {
         Map<Die, Integer> rolledDice = new LinkedHashMap<Die, Integer>();
         rolledDice.put(Die.D1, 2);

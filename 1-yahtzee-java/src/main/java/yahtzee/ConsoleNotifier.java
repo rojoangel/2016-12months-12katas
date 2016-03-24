@@ -24,4 +24,8 @@ public class ConsoleNotifier {
         this.console.print("[" + (rerunsSoFar + 1) + "] Dice to re-run:");
 
     }
+
+    public void notifyCurrentCategory(Category category) {
+        this.console.print("Category: Ones");
+    }
 }
