@@ -29,10 +29,10 @@ public class Yahtzee {
     }
 
     private void doReruns() {
-        this.console.print("[1] Dice to re-run:");
-        roll(obtainDiceToRoll());
-        this.console.print("[2] Dice to re-run:");
-        roll(obtainDiceToRoll());
+        for (int rerun = 1; rerun <= 2 ; rerun++) {
+            this.console.print("[" + rerun + "] Dice to re-run:");
+            roll(obtainDiceToRoll());
+        }
     }
 
     private Die[] obtainDiceToRoll() {
