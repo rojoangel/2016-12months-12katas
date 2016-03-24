@@ -15,4 +15,12 @@ public class ScoresHistory {
     public int maxScore(Category category) {
         return Collections.max(this.scoresHistory.get(category));
     }
+
+    public int finalScore() {
+        int finalScore = 0;
+        for (Category category : Category.values()) {
+            finalScore += this.maxScore(category);
+        }
+        return finalScore;
+    }
 }

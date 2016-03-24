@@ -22,5 +22,7 @@ public class ScoresHistoryTest {
         assertEquals(3, history.maxScore(Category.Ones));
         assertEquals(4, history.maxScore(Category.Twos));
         assertEquals(5, history.maxScore(Category.Threes));
+
+        assertEquals(12, history.finalScore());
     }
 }
