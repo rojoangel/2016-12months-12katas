@@ -23,10 +23,23 @@ public class Yahtzee {
     }
 
     public void play() {
+        playAllCategories();
+        summarizeScores();
+    }
+
+    private void playAllCategories() {
         for (Category category : Category.values()) {
             playCategory(category);
         }
-        summarizeScores();
+    }
+
+    private void playCategory(Category category) {
+        showCategory(category);
+        rollAllDice();
+        doReruns();
+        int score = computeScore(category);
+        anotateScore(category, score);
+        showCategoryScore(category, score);
     }
 
     private void summarizeScores() {
@@ -41,13 +54,20 @@ public class Yahtzee {
         return maxScoresByCategory;
     }
 
-    private void playCategory(Category category) {
-        this.notifier.notifyCurrentCategory(category);
-        roll(Die.D1, Die.D2, Die.D3, Die.D4, Die.D5);
-        doReruns();
-        int score = category.computeScore(lastRolledDice());
-        anotateScore(category, score);
+    private void showCategoryScore(Category category, int score) {
         this.notifier.notifyCategoryScore(category, score);
+    }
+
+    private int computeScore(Category category) {
+        return category.computeScore(lastRolledDice());
+    }
+
+    private void rollAllDice() {
+        roll(Die.D1, Die.D2, Die.D3, Die.D4, Die.D5);
+    }
+
+    private void showCategory(Category category) {
+        this.notifier.notifyCurrentCategory(category);
     }
 
     private void anotateScore(Category category, int score) {
