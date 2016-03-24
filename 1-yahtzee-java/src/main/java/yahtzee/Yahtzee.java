@@ -26,13 +26,17 @@ public class Yahtzee {
         this.console.print("Category: Ones");
         roll(Die.D1, Die.D2, Die.D3, Die.D4, Die.D5);
         this.console.print("[1] Dice to re-run:");
+        roll(obtainDiceToRoll());
+    }
+
+    private Die[] obtainDiceToRoll() {
         String userInput = this.userInputReader.readLine();
         String[] splittedUserInput = userInput.split(" ");
-        List<Die> diceToRoll = new ArrayList<Die>();
+        List<Die> userInputDice = new ArrayList<Die>();
         for (String userEnteredDie : splittedUserInput) {
-            diceToRoll.add(Die.valueOf(userEnteredDie));
+            userInputDice.add(Die.valueOf(userEnteredDie));
         }
-        roll(diceToRoll.toArray(new Die[diceToRoll.size()]));
+        return userInputDice.toArray(new Die[userInputDice.size()]);
     }
 
     private void roll(Die... dice) {
