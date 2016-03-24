@@ -21,12 +21,17 @@ public class YahtzeeTest {
                                           1, 5,
                                           2, 4, 1, 6, 1,
                                           2, 3,
-                                          6, 1, 2);
+                                          6, 1, 2,
+                                          2, 4, 1, 6, 1,
+                                          5, 1, 3, 2, 3,
+                                          6, 2, 4);
         UserInputReader userInputReader = mock(UserInputReader.class);
         when(userInputReader.readLine()).thenReturn("D1 D2 D4",
                                                     "D2 D4",
                                                     "D2 D5",
-                                                    "D3 D4 D5");
+                                                    "D3 D4 D5",
+                                                    "D1 D2 D3 D4 D5",
+                                                    "D1 D2 D4");
         DiceRoller diceRoller = new DiceRoller(dieRoller);
 
         Yahtzee yahtzee = new Yahtzee(notifier, userInputReader, diceRoller);
@@ -47,6 +52,13 @@ public class YahtzeeTest {
         outputLines.add("[2] Dice to re-run:");
         outputLines.add("Dice: D1:2 D2:2 D3:6 D4:1 D5:2");
         outputLines.add("Category Twos score: 3");
+        outputLines.add("Category: Threes");
+        outputLines.add("Dice: D1:2 D2:4 D3:1 D4:6 D5:1");
+        outputLines.add("[1] Dice to re-run:");
+        outputLines.add("Dice: D1:5 D2:1 D3:3 D4:2 D5:3");
+        outputLines.add("[2] Dice to re-run:");
+        outputLines.add("Dice: D1:6 D2:2 D3:3 D4:4 D5:3");
+        outputLines.add("Category Threes score: 2");
         assertEquals(outputLines, console.getOutput());
     }
 

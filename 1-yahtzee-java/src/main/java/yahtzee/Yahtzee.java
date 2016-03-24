@@ -21,7 +21,7 @@ public class Yahtzee {
     }
 
     public void play() {
-        for (Category category : new Category[]{Category.Ones, Category.Twos}) {
+        for (Category category : Category.values()) {
             playCategory(category);
         }
     }
