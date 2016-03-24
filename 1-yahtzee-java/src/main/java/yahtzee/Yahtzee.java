@@ -25,6 +25,10 @@ public class Yahtzee {
         for (Category category : Category.values()) {
             playCategory(category);
         }
+        summarizeScores();
+    }
+
+    private void summarizeScores() {
         this.console.print("Yahtzee score");
         this.console.print("Ones: 4");
         this.console.print("Twos: 3");
