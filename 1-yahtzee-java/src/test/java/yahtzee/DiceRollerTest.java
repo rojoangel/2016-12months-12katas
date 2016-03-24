@@ -14,13 +14,7 @@ public class DiceRollerTest {
     @Test
     public void testRollAll() throws Exception {
 
-        DieRoller dieRoller = mock(DieRoller.class);
-        when(dieRoller.roll())
-                .thenReturn(1)
-                .thenReturn(5)
-                .thenReturn(1)
-                .thenReturn(2)
-                .thenReturn(1);
+        DieRoller dieRoller = generateADieRollerWithRollingValues(1, 5, 1, 2, 1);
 
         DiceRoller diceRoller = new DiceRoller(dieRoller);
 
@@ -32,17 +26,7 @@ public class DiceRollerTest {
     @Test
     public void testRollsOnlyTheDesiredDiceKeepingThePreviousValueForTheOthers() throws Exception {
 
-        DieRoller dieRoller = mock(DieRoller.class);
-        when(dieRoller.roll())
-                .thenReturn(6)
-                .thenReturn(5)
-                .thenReturn(4)
-                .thenReturn(2)
-                .thenReturn(3)
-                .thenReturn(1)
-                .thenReturn(1)
-                .thenReturn(1);
-
+        DieRoller dieRoller = generateADieRollerWithRollingValues(6, 5, 4, 2, 3, 1, 1, 1);
 
         DiceRoller diceRoller = new DiceRoller(dieRoller);
 
@@ -52,6 +36,12 @@ public class DiceRollerTest {
 
         assertEquals(generateExpectedRolledDice(), diceRoller.getRollResult());
 
+    }
+
+    private DieRoller generateADieRollerWithRollingValues(Integer value, Integer... values) {
+        DieRoller dieRoller = mock(DieRoller.class);
+        when(dieRoller.roll()).thenReturn(value, values);
+        return dieRoller;
     }
 
     private Map<Integer, Integer> generateExpectedRolledDice() {
