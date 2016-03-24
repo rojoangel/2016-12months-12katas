@@ -27,14 +27,15 @@ public class YahtzeeTest {
         Yahtzee yahtzee = new Yahtzee(console, notifier, userInputReader, diceRoller);
         yahtzee.play();
 
-        List<String> l = new ArrayList<String>();
-        l.add("Category: Ones");
-        l.add("Dice: D1:2 D2:4 D3:1 D4:6 D5:1");
-        l.add("[1] Dice to re-run:");
-        l.add("Dice: D1:1 D2:5 D3:1 D4:2 D5:1");
-        l.add("[2] Dice to re-run:");
-        l.add("Dice: D1:1 D2:1 D3:1 D4:5 D5:1");
-        assertEquals(l, console.getOutput());
+        List<String> outputLines = new ArrayList<String>();
+        outputLines.add("Category: Ones");
+        outputLines.add("Dice: D1:2 D2:4 D3:1 D4:6 D5:1");
+        outputLines.add("[1] Dice to re-run:");
+        outputLines.add("Dice: D1:1 D2:5 D3:1 D4:2 D5:1");
+        outputLines.add("[2] Dice to re-run:");
+        outputLines.add("Dice: D1:1 D2:1 D3:1 D4:5 D5:1");
+        outputLines.add("Category Ones score: 4");
+        assertEquals(outputLines, console.getOutput());
     }
 
 }
