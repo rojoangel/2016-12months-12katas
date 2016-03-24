@@ -30,13 +30,8 @@ public class Yahtzee {
     }
 
     private Die[] obtainDiceToRoll() {
-        String userInput = this.userInputReader.readLine();
-        String[] splittedUserInput = userInput.split(" ");
-        List<Die> userInputDice = new ArrayList<Die>();
-        for (String userEnteredDie : splittedUserInput) {
-            userInputDice.add(Die.valueOf(userEnteredDie));
-        }
-        return userInputDice.toArray(new Die[userInputDice.size()]);
+        InputLine inputLine = new InputLine(this.userInputReader.readLine());
+        return inputLine.diceToRoll();
     }
 
     private void roll(Die... dice) {
