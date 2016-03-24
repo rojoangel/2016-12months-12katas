@@ -26,6 +26,6 @@ public class ConsoleNotifier {
     }
 
     public void notifyCurrentCategory(Category category) {
-        this.console.print("Category: Ones");
+        this.console.print("Category: " + category);
     }
 }

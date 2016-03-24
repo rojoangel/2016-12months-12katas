@@ -40,6 +40,12 @@ public class ConsoleNotifierTest {
         assertEquals(Collections.singletonList("Category: Ones"), console.getOutput());
     }
 
+    @Test
+    public void testNotifyCurrentCategoryForTwos() throws Exception {
+        consoleNotifier.notifyCurrentCategory(Category.Twos);
+        assertEquals(Collections.singletonList("Category: Twos"), console.getOutput());
+    }
+
     private Map<Die, Integer> generateRolledDice() {
         Map<Die, Integer> rolledDice = new LinkedHashMap<Die, Integer>();
         rolledDice.put(Die.D1, 2);
