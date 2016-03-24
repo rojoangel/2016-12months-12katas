@@ -28,4 +28,8 @@ public class ConsoleNotifier {
     public void notifyCurrentCategory(Category category) {
         this.console.print("Category: " + category);
     }
+
+    public void notifyCategoryScore(Category category, int score) {
+        this.console.print("Category " + category + " score: " + score);
+    }
 }

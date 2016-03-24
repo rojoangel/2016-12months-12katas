@@ -46,6 +46,20 @@ public class ConsoleNotifierTest {
         assertEquals(Collections.singletonList("Category: Twos"), console.getOutput());
     }
 
+    @Test
+    public void testNotifyCategoryScoreForOnes() throws Exception {
+        int score = 2;
+        consoleNotifier.notifyCategoryScore(Category.Ones, score);
+        assertEquals(Collections.singletonList("Category Ones score: " + score), console.getOutput());
+    }
+
+    @Test
+    public void testNotifyCategoryScoreForTwos() throws Exception {
+        int score = 5;
+        consoleNotifier.notifyCategoryScore(Category.Twos, score);
+        assertEquals(Collections.singletonList("Category Twos score: " + score), console.getOutput());
+    }
+
     private Map<Die, Integer> generateRolledDice() {
         Map<Die, Integer> rolledDice = new LinkedHashMap<Die, Integer>();
         rolledDice.put(Die.D1, 2);
