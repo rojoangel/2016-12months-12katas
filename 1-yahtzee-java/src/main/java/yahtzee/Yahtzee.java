@@ -43,17 +43,9 @@ public class Yahtzee {
     }
 
     private void summarizeScores() {
-        this.notifier.notifyGameScore(maxScoresByCategory(), scoresHistory.finalScore());
+        this.notifier.notifyGameScore(scoresHistory.maxScoresByCategory(), scoresHistory.finalScore());
     }
-
-    private Map<Category, Integer> maxScoresByCategory() {
-        Map<Category, Integer> maxScoresByCategory = new LinkedHashMap<Category, Integer>();
-        for (Category category : Category.values()) {
-            maxScoresByCategory.put(category, scoresHistory.maxScore(category));
-        }
-        return maxScoresByCategory;
-    }
-
+    
     private void showCategoryScore(Category category, int score) {
         this.notifier.notifyCategoryScore(category, score);
     }
