@@ -35,7 +35,7 @@ public class Yahtzee {
     }
 
     private int computeScore(Category category) {
-        return new DiceScorer(category).computeScore(diceRoller.getRollResult());
+        return new DiceScorer(category).computeScore(lastRolledDice());
     }
 
     private void doReruns() {
@@ -52,7 +52,10 @@ public class Yahtzee {
 
     private void roll(Die... dice) {
         this.diceRoller.roll(dice);
-        Map<Die, Integer> rolledDice = diceRoller.getRollResult();
-        this.notifier.notifyRolledDice(rolledDice);
+        this.notifier.notifyRolledDice(lastRolledDice());
+    }
+
+    private Map<Die, Integer> lastRolledDice() {
+        return diceRoller.getRollResult();
     }
 }
