@@ -23,14 +23,8 @@ public class Yahtzee {
     }
 
     public void play() {
-        playAllCategories();
+        new Categories().play();
         summarizeScores();
-    }
-
-    private void playAllCategories() {
-        for (Category category : Category.values()) {
-            playCategory(category);
-        }
     }
 
     private void playCategory(Category category) {
@@ -65,5 +59,13 @@ public class Yahtzee {
 
     private Map<Die, Integer> lastRolledDice() {
         return diceRoller.getRollResult();
+    }
+
+    private class Categories {
+        public void play() {
+            for (Category category : Category.values()) {
+                playCategory(category);
+            }
+        }
     }
 }
