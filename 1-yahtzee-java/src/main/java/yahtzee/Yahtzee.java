@@ -21,11 +21,11 @@ public class Yahtzee {
         this.userInputReader = userInputReader;
         this.diceRoller = diceRoller;
         this.scoresHistory = scoresHistory;
-        this.categories = new Categories();
+        this.categories = new Categories(notifier, userInputReader, diceRoller, scoresHistory);
     }
 
     public void play() {
-        new Categories().play();
+        this.categories.play();
         summarizeScores();
     }
 
@@ -34,36 +34,52 @@ public class Yahtzee {
     }
 
     private class Categories {
+        private ConsoleNotifier notifier;
+        private ScoresHistory scoresHistory;
+        private DiceRoller diceRoller;
+        private UserInputReader userInputReader;
+
+        private Categories(
+                ConsoleNotifier notifier,
+                UserInputReader userInputReader,
+                DiceRoller diceRoller,
+                ScoresHistory scoresHistory) {
+            this.notifier = notifier;
+            this.userInputReader = userInputReader;
+            this.scoresHistory = scoresHistory;
+            this.diceRoller = diceRoller;
+        }
+
         public void play() {
             for (Category category : Category.values()) {
-                Yahtzee.this.notifier.notifyCurrentCategory(category);
+                this.notifier.notifyCurrentCategory(category);
                 roll(Die.values());
                 doReruns();
                 int score = category.computeScore(lastRolledDice());
-                Yahtzee.this.scoresHistory.annotateScore(category, score);
-                Yahtzee.this.notifier.notifyCategoryScore(category, score);
+                this.scoresHistory.annotateScore(category, score);
+                this.notifier.notifyCategoryScore(category, score);
             }
         }
 
         private void roll(Die... dice) {
-            Yahtzee.this.diceRoller.roll(dice);
-            Yahtzee.this.notifier.notifyRolledDice(lastRolledDice());
+            this.diceRoller.roll(dice);
+            this.notifier.notifyRolledDice(lastRolledDice());
         }
 
         private void doReruns() {
             for (int rerunsSoFar = 0; rerunsSoFar < NUM_RERUNS; rerunsSoFar++) {
-                Yahtzee.this.notifier.notifyUserToIntroduceDiceToRerun(rerunsSoFar);
+                this.notifier.notifyUserToIntroduceDiceToRerun(rerunsSoFar);
                 roll(obtainDiceToRoll());
             }
         }
 
         private Die[] obtainDiceToRoll() {
-            InputLine inputLine = new InputLine(Yahtzee.this.userInputReader.readLine());
+            InputLine inputLine = new InputLine(this.userInputReader.readLine());
             return inputLine.diceToRoll();
         }
 
         private Map<Die, Integer> lastRolledDice() {
-            return diceRoller.getRollResult();
+            return this.diceRoller.getRollResult();
         }
 
     }
