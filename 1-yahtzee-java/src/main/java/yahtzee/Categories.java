@@ -1,7 +1,5 @@
 package yahtzee;
 
-import java.util.Map;
-
 public class Categories {
     private ConsoleNotifier notifier;
     private ScoresHistory scoresHistory;
@@ -26,7 +24,7 @@ public class Categories {
             this.notifier.notifyCurrentCategory(category);
             rollAll();
             this.reruns.doReruns(numReruns);
-            int score = category.computeScore(lastRolledDice());
+            int score = category.computeScore(this.diceRoller.lastRolledDice());
             this.scoresHistory.annotateScore(category, score);
             this.notifier.notifyCategoryScore(category, score);
         }
@@ -34,11 +32,7 @@ public class Categories {
 
     private void rollAll() {
         this.diceRoller.roll(Die.values());
-        this.notifier.notifyRolledDice(lastRolledDice());
-    }
-
-    private Map<Die, Integer> lastRolledDice() {
-        return this.diceRoller.lastRolledDice();
+        this.notifier.notifyRolledDice(this.diceRoller.lastRolledDice());
     }
 
     public class Reruns {
@@ -70,7 +64,7 @@ public class Categories {
 
         private void roll(Die... dice) {
             this.diceRoller.roll(dice);
-            this.notifier.notifyRolledDice(lastRolledDice());
+            this.notifier.notifyRolledDice(Categories.this.diceRoller.lastRolledDice());
         }
     }
 }
