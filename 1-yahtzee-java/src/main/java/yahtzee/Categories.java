@@ -11,12 +11,12 @@ public class Categories {
             ConsoleNotifier notifier,
             UserInputReader userInputReader,
             DiceRoller diceRoller,
-            ScoresHistory scoresHistory) {
+            ScoresHistory scoresHistory, Reruns reruns) {
         this.notifier = notifier;
         this.userInputReader = userInputReader;
         this.scoresHistory = scoresHistory;
         this.diceRoller = diceRoller;
-        this.reruns = new Reruns(notifier, userInputReader, diceRoller);
+        this.reruns = reruns;
     }
 
     public void play(int numReruns) {
