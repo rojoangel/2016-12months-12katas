@@ -33,10 +33,6 @@ public class Yahtzee {
         this.notifier.notifyGameScore(scoresHistory.maxScoresByCategory(), scoresHistory.finalScore());
     }
 
-    private Map<Die, Integer> lastRolledDice() {
-        return diceRoller.getRollResult();
-    }
-
     private class Categories {
         public void play() {
             for (Category category : Category.values()) {
@@ -65,5 +61,10 @@ public class Yahtzee {
             InputLine inputLine = new InputLine(Yahtzee.this.userInputReader.readLine());
             return inputLine.diceToRoll();
         }
+
+        private Map<Die, Integer> lastRolledDice() {
+            return diceRoller.getRollResult();
+        }
+
     }
 }
