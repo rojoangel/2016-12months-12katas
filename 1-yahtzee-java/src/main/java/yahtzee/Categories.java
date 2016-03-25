@@ -4,16 +4,15 @@ public class Categories {
     private ConsoleNotifier notifier;
     private ScoresHistory scoresHistory;
     private DiceRoller diceRoller;
-    private UserInputReader userInputReader;
     private Reruns reruns;
 
     public Categories(
             ConsoleNotifier notifier,
-            UserInputReader userInputReader,
             DiceRoller diceRoller,
-            ScoresHistory scoresHistory, Reruns reruns) {
+            ScoresHistory scoresHistory,
+            Reruns reruns
+    ) {
         this.notifier = notifier;
-        this.userInputReader = userInputReader;
         this.scoresHistory = scoresHistory;
         this.diceRoller = diceRoller;
         this.reruns = reruns;
