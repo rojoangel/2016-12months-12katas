@@ -7,6 +7,7 @@ public class Categories {
     private ScoresHistory scoresHistory;
     private DiceRoller diceRoller;
     private UserInputReader userInputReader;
+    private Reruns reruns;
 
     public Categories(
             ConsoleNotifier notifier,
@@ -17,13 +18,14 @@ public class Categories {
         this.userInputReader = userInputReader;
         this.scoresHistory = scoresHistory;
         this.diceRoller = diceRoller;
+        this.reruns = new Reruns(notifier, userInputReader, diceRoller);
     }
 
     public void play(int numReruns) {
         for (Category category : Category.values()) {
             this.notifier.notifyCurrentCategory(category);
             rollAll();
-            new Reruns(notifier, userInputReader, diceRoller).doReruns(numReruns);
+            this.reruns.doReruns(numReruns);
             int score = category.computeScore(lastRolledDice());
             this.scoresHistory.annotateScore(category, score);
             this.notifier.notifyCategoryScore(category, score);
