@@ -4,21 +4,15 @@ public class Yahtzee {
 
     public static final int NUM_RERUNS = 2;
     private ConsoleNotifier notifier;
-    private UserInputReader userInputReader;
-    private DiceRoller diceRoller;
     private ScoresHistory scoresHistory;
     private Categories categories;
 
     public Yahtzee(
             ConsoleNotifier notifier,
-            UserInputReader userInputReader,
-            DiceRoller diceRoller,
             ScoresHistory scoresHistory,
             Categories categories
     ) {
         this.notifier = notifier;
-        this.userInputReader = userInputReader;
-        this.diceRoller = diceRoller;
         this.scoresHistory = scoresHistory;
         this.categories = categories;
     }
