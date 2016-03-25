@@ -9,6 +9,7 @@ public class Yahtzee {
     private UserInputReader userInputReader;
     private DiceRoller diceRoller;
     private ScoresHistory scoresHistory;
+    private Categories categories;
 
     public Yahtzee(
             ConsoleNotifier notifier,
@@ -20,6 +21,7 @@ public class Yahtzee {
         this.userInputReader = userInputReader;
         this.diceRoller = diceRoller;
         this.scoresHistory = scoresHistory;
+        this.categories = new Categories();
     }
 
     public void play() {
@@ -58,7 +60,7 @@ public class Yahtzee {
                 roll(obtainDiceToRoll());
             }
         }
-        
+
         private Die[] obtainDiceToRoll() {
             InputLine inputLine = new InputLine(Yahtzee.this.userInputReader.readLine());
             return inputLine.diceToRoll();
