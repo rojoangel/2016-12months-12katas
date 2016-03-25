@@ -22,33 +22,53 @@ public class Categories {
     public void play(int numReruns) {
         for (Category category : Category.values()) {
             this.notifier.notifyCurrentCategory(category);
-            roll(Die.values());
-            doReruns(numReruns);
+            rollAll();
+            new Reruns(notifier, userInputReader, diceRoller).doReruns(numReruns);
             int score = category.computeScore(lastRolledDice());
             this.scoresHistory.annotateScore(category, score);
             this.notifier.notifyCategoryScore(category, score);
         }
     }
 
-    private void roll(Die... dice) {
-        this.diceRoller.roll(dice);
+    private void rollAll() {
+        this.diceRoller.roll(Die.values());
         this.notifier.notifyRolledDice(lastRolledDice());
-    }
-
-    private void doReruns(int numReruns) {
-        for (int rerunsSoFar = 0; rerunsSoFar < numReruns; rerunsSoFar++) {
-            this.notifier.notifyUserToIntroduceDiceToRerun(rerunsSoFar);
-            roll(obtainDiceToRoll());
-        }
-    }
-
-    private Die[] obtainDiceToRoll() {
-        InputLine inputLine = new InputLine(this.userInputReader.readLine());
-        return inputLine.diceToRoll();
     }
 
     private Map<Die, Integer> lastRolledDice() {
         return this.diceRoller.getRollResult();
     }
 
+    public class Reruns {
+
+        private ConsoleNotifier notifier;
+        private UserInputReader userInputReader;
+        private DiceRoller diceRoller;
+
+        public Reruns(
+                ConsoleNotifier notifier,
+                UserInputReader userInputReader,
+                DiceRoller diceRoller) {
+            this.notifier = notifier;
+            this.userInputReader = userInputReader;
+            this.diceRoller = diceRoller;
+        }
+
+        public void doReruns(int numReruns) {
+            for (int rerunsSoFar = 0; rerunsSoFar < numReruns; rerunsSoFar++) {
+                this.notifier.notifyUserToIntroduceDiceToRerun(rerunsSoFar);
+                roll(obtainDiceToRoll());
+            }
+        }
+
+        private Die[] obtainDiceToRoll() {
+            InputLine inputLine = new InputLine(this.userInputReader.readLine());
+            return inputLine.diceToRoll();
+        }
+
+        private void roll(Die... dice) {
+            this.diceRoller.roll(dice);
+            this.notifier.notifyRolledDice(lastRolledDice());
+        }
+    }
 }
