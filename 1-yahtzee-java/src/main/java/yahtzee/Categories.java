@@ -38,7 +38,7 @@ public class Categories {
     }
 
     private Map<Die, Integer> lastRolledDice() {
-        return this.diceRoller.getRollResult();
+        return this.diceRoller.lastRolledDice();
     }
 
     public class Reruns {
