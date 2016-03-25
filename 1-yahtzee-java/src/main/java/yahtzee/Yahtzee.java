@@ -13,13 +13,14 @@ public class Yahtzee {
             ConsoleNotifier notifier,
             UserInputReader userInputReader,
             DiceRoller diceRoller,
-            ScoresHistory scoresHistory
+            ScoresHistory scoresHistory,
+            Categories categories
     ) {
         this.notifier = notifier;
         this.userInputReader = userInputReader;
         this.diceRoller = diceRoller;
         this.scoresHistory = scoresHistory;
-        this.categories = new Categories(notifier, userInputReader, diceRoller, scoresHistory);
+        this.categories = categories;
     }
 
     public void play() {

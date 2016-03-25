@@ -34,7 +34,8 @@ public class YahtzeeTest {
                                                     "D1 D2 D4");
         DiceRoller diceRoller = new DiceRoller(dieRoller);
         ScoresHistory scoresHistory = new InMemoryScoresHistory();
-        Yahtzee yahtzee = new Yahtzee(notifier, userInputReader, diceRoller, scoresHistory);
+        Categories categories = new Categories(notifier, userInputReader, diceRoller, scoresHistory);
+        Yahtzee yahtzee = new Yahtzee(notifier, userInputReader, diceRoller, scoresHistory, categories);
         yahtzee.play();
 
         List<String> outputLines = new ArrayList<String>();
