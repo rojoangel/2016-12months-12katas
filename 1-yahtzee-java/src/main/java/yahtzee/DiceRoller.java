@@ -19,7 +19,7 @@ public class DiceRoller {
         }
     }
 
-    public Map<Die, Integer> getRollResult() {
+    public Map<Die, Integer> lastRolledDice() {
         return this.rollResult;
     }
 }

@@ -20,7 +20,7 @@ public class DiceRollerTest {
 
         diceRoller.roll(Die.values());
 
-        assertEquals(generateExpectedRolledDice(), diceRoller.getRollResult());
+        assertEquals(generateExpectedRolledDice(), diceRoller.lastRolledDice());
     }
 
     @Test
@@ -34,7 +34,7 @@ public class DiceRollerTest {
 
         diceRoller.roll(Die.D1, Die.D3, Die.D5);
 
-        assertEquals(generateExpectedRolledDice(), diceRoller.getRollResult());
+        assertEquals(generateExpectedRolledDice(), diceRoller.lastRolledDice());
 
     }
 
