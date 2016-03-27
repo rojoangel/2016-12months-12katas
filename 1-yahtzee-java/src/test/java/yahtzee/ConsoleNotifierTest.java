@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 public class ConsoleNotifierTest {
 
 
-    private Console console;
+    private FakeConsole console;
     private ConsoleNotifier consoleNotifier;
 
     @Before
