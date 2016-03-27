@@ -17,7 +17,7 @@ public enum Category {
         return value;
     }
 
-    public int computeScore(Map<Die, Integer> dice) {
+    public int computeScore(Map<Dice, Integer> dice) {
         int score = 0;
         for (Integer value : dice.values()) {
             if (value.equals(this.getValue())) {

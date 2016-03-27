@@ -30,7 +30,7 @@ public class Categories {
     }
 
     private void rollAll() {
-        this.diceRoller.roll(Die.values());
+        this.diceRoller.roll(Dice.values());
         this.notifier.notifyRolledDice(this.diceRoller.lastRolledDice());
     }
 }
