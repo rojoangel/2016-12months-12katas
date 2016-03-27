@@ -6,20 +6,20 @@ import java.util.Map;
 public class DiceRoller {
 
     private DieRoller dieRoller;
-    private Map<Dice, Integer> rollResult;
+    private Map<Die, Integer> rollResult;
 
     public DiceRoller(DieRoller dieRoller) {
-        this.rollResult = new LinkedHashMap<Dice, Integer>();
+        this.rollResult = new LinkedHashMap<Die, Integer>();
         this.dieRoller = dieRoller;
     }
 
-    public void roll(Dice... dice) {
-        for (Dice die : dice) {
+    public void roll(Die... dice) {
+        for (Die die : dice) {
             rollResult.put(die, this.dieRoller.roll());
         }
     }
 
-    public Map<Dice, Integer> lastRolledDice() {
+    public Map<Die, Integer> lastRolledDice() {
         return this.rollResult;
     }
 }

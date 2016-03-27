@@ -9,9 +9,9 @@ public class ConsoleNotifier {
         this.console = console;
     }
 
-    void notifyRolledDice(Map<Dice, Integer> rolledDice) {
+    void notifyRolledDice(Map<Die, Integer> rolledDice) {
         StringBuilder formattedDice = new StringBuilder("Dice:");
-        for (Dice die : rolledDice.keySet()) {
+        for (Die die : rolledDice.keySet()) {
             formattedDice.append(" ")
                     .append(die)
                     .append(":")
