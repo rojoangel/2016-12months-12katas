@@ -18,7 +18,7 @@ public class DiceRollerTest {
 
         DiceRoller diceRoller = new DiceRoller(dieRoller);
 
-        diceRoller.roll(Die.values());
+        diceRoller.roll(Dice.values());
 
         assertEquals(generateExpectedRolledDice(), diceRoller.lastRolledDice());
     }
@@ -30,9 +30,9 @@ public class DiceRollerTest {
 
         DiceRoller diceRoller = new DiceRoller(dieRoller);
 
-        diceRoller.roll(Die.values());
+        diceRoller.roll(Dice.values());
 
-        diceRoller.roll(Die.D1, Die.D3, Die.D5);
+        diceRoller.roll(Dice.D1, Dice.D3, Dice.D5);
 
         assertEquals(generateExpectedRolledDice(), diceRoller.lastRolledDice());
 
@@ -44,13 +44,13 @@ public class DiceRollerTest {
         return dieRoller;
     }
 
-    private Map<Die, Integer> generateExpectedRolledDice() {
-        Map<Die, Integer> rolledDice = new HashMap<Die, Integer>();
-        rolledDice.put(Die.D1, 1);
-        rolledDice.put(Die.D2, 5);
-        rolledDice.put(Die.D3, 1);
-        rolledDice.put(Die.D4, 2);
-        rolledDice.put(Die.D5 ,1);
+    private Map<Dice, Integer> generateExpectedRolledDice() {
+        Map<Dice, Integer> rolledDice = new HashMap<Dice, Integer>();
+        rolledDice.put(Dice.D1, 1);
+        rolledDice.put(Dice.D2, 5);
+        rolledDice.put(Dice.D3, 1);
+        rolledDice.put(Dice.D4, 2);
+        rolledDice.put(Dice.D5 ,1);
         return rolledDice;
     }
 

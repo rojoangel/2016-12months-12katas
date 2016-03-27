@@ -22,12 +22,12 @@ public class Reruns {
         }
     }
 
-    private Die[] obtainDiceToRoll() {
+    private Dice[] obtainDiceToRoll() {
         InputLine inputLine = new InputLine(this.userInputReader.readLine());
         return inputLine.diceToRoll();
     }
 
-    private void roll(Die... dice) {
+    private void roll(Dice... dice) {
         this.diceRoller.roll(dice);
         this.notifier.notifyRolledDice(this.diceRoller.lastRolledDice());
     }

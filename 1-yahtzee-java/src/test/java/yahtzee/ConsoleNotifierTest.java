@@ -75,13 +75,13 @@ public class ConsoleNotifierTest {
                 console.getOutput());
     }
 
-    private Map<Die, Integer> generateRolledDice() {
-        Map<Die, Integer> rolledDice = new LinkedHashMap<Die, Integer>();
-        rolledDice.put(Die.D1, 2);
-        rolledDice.put(Die.D2, 4);
-        rolledDice.put(Die.D3, 1);
-        rolledDice.put(Die.D4, 6);
-        rolledDice.put(Die.D5 ,1);
+    private Map<Dice, Integer> generateRolledDice() {
+        Map<Dice, Integer> rolledDice = new LinkedHashMap<Dice, Integer>();
+        rolledDice.put(Dice.D1, 2);
+        rolledDice.put(Dice.D2, 4);
+        rolledDice.put(Dice.D3, 1);
+        rolledDice.put(Dice.D4, 6);
+        rolledDice.put(Dice.D5 ,1);
         return rolledDice;
     }
 
