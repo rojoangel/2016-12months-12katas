@@ -11,13 +11,13 @@ public class InputLine {
         this.line = line;
     }
 
-    public Dice[] diceToRoll() {
+    public Die[] diceToRoll() {
         String[] splittedUserInput = this.line.split(" ");
-        List<Dice> userInputDice = new ArrayList<Dice>();
+        List<Die> userInputDice = new ArrayList<Die>();
         for (String userEnteredDie : splittedUserInput) {
-            userInputDice.add(Dice.valueOf(userEnteredDie));
+            userInputDice.add(Die.valueOf(userEnteredDie));
         }
-        return userInputDice.toArray(new Dice[userInputDice.size()]);
+        return userInputDice.toArray(new Die[userInputDice.size()]);
 
     }
 }

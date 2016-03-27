@@ -27,13 +27,13 @@ public class CategoryTest {
         assertEquals(1, twos.computeScore(generateRolledDice()));
     }
 
-    private Map<Dice, Integer> generateRolledDice() {
-        Map<Dice, Integer> rolledDice = new HashMap<Dice, Integer>();
-        rolledDice.put(Dice.D1, 1);
-        rolledDice.put(Dice.D2, 5);
-        rolledDice.put(Dice.D3, 1);
-        rolledDice.put(Dice.D4, 2);
-        rolledDice.put(Dice.D5 ,1);
+    private Map<Die, Integer> generateRolledDice() {
+        Map<Die, Integer> rolledDice = new HashMap<Die, Integer>();
+        rolledDice.put(Die.D1, 1);
+        rolledDice.put(Die.D2, 5);
+        rolledDice.put(Die.D3, 1);
+        rolledDice.put(Die.D4, 2);
+        rolledDice.put(Die.D5 ,1);
         return rolledDice;
     }
 
