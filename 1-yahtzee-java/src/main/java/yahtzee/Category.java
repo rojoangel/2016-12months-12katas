@@ -13,14 +13,10 @@ public enum Category {
         this.value = value;
     }
 
-    public int getValue() {
-        return value;
-    }
-
     public int computeScore(Map<Die, Integer> dice) {
         int score = 0;
         for (Integer value : dice.values()) {
-            if (value.equals(this.getValue())) {
+            if (value.equals(this.value)) {
                 score++;
             }
         }
