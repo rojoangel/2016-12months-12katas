@@ -1,0 +1,16 @@
+{
+    "name": "rojoa/2-yahtzee-php",
+    "description": "Yahtzee Kata Round I",
+    "require": {
+        "php": "^5.5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.2"
+    },
+    "authors": [
+        {
+            "name": "rojoangel",
+            "email": "rojo.angel@gmail.com"
+        }
+    ]
+}
