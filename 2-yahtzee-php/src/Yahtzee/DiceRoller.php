@@ -25,10 +25,20 @@ class DiceRoller
      */
     public function rollAll()
     {
-        $this->dice = $this->rollDice([1, 2, 3, 4, 5]);
+        $this->rollDice([1, 2, 3, 4, 5]);
         return $this->dice;
     }
-    
+
+    /**
+     * @param $diceToReRun
+     * @return mixed
+     */
+    public function reRun($diceToReRun)
+    {
+        $this->rollDice($diceToReRun);
+        return $this->dice;
+    }
+
     /**
      * @param array $diceToRoll
      * @return array
