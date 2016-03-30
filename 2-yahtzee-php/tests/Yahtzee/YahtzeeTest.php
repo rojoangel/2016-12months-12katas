@@ -8,7 +8,8 @@ class YahtzeeTest extends \PHPUnit_Framework_TestCase
     public function testGame()
     {
         $console = new FakeConsole();
-        $dieRoller = new FakeDieRoller([2, 4, 1, 6, 1]);
+        $dieRoller = new FakeDieRoller([2, 4, 1, 6, 1,
+                                        1, 5 ,2]);
         $yahtzee = new Yahtzee($console, $dieRoller);
 
         $yahtzee->play();
