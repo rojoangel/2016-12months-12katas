@@ -22,5 +22,6 @@ class Yahtzee
     public function play() {
         $this->console->printLine("Category: Ones");
         $this->console->printLine("Dice: D1:2 D2:4 D3:1 D4:6 D5:1");
+        $this->console->printLine("[1] Dice to re-run:");
     }
 }
