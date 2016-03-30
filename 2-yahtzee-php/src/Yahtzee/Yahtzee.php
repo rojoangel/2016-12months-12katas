@@ -9,21 +9,16 @@ class Yahtzee
     /** @var Console */
     private $console;
     
-    /** @var DieRoller */
-    private $dieRoller;
-
     /** @var DiceRoller */
     private $diceRoller;
 
     /**
      * @param Console $console
-     * @param DieRoller $dieRoller
      * @param DiceRoller $diceRoller
      */
-    public function __construct(Console $console, DieRoller $dieRoller, DiceRoller $diceRoller)
+    public function __construct(Console $console, DiceRoller $diceRoller)
     {
         $this->console = $console;
-        $this->dieRoller = $dieRoller;
         $this->diceRoller = $diceRoller;
     }
     
