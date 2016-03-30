@@ -18,12 +18,13 @@ class Yahtzee
     /**
      * @param Console $console
      * @param DieRoller $dieRoller
+     * @param DiceRoller $diceRoller
      */
-    public function __construct(Console $console, DieRoller $dieRoller)
+    public function __construct(Console $console, DieRoller $dieRoller, DiceRoller $diceRoller)
     {
         $this->console = $console;
         $this->dieRoller = $dieRoller;
-        $this->diceRoller = new DiceRoller($dieRoller);
+        $this->diceRoller = $diceRoller;
     }
     
     public function play() {
