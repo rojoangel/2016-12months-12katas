@@ -6,14 +6,10 @@ namespace Yahtzee;
 
 class Yahtzee
 {
-    /**
-     * @var Console
-     */
+    /** @var Console */
     private $console;
     
-    /**
-     * @var DieRoller
-     */
+    /** @var DieRoller */
     private $dieRoller;
 
     /** @var DiceRoller */
@@ -40,7 +36,7 @@ class Yahtzee
         $this->console->printLine("[1] Dice to re-run:");
 
         $diceToReRun = $this->getDiceToReRun();
-        $dice = $this->reRunDice($diceToReRun, $dice);
+        $dice = $this->reRunDice($diceToReRun);
         $this->printDiceLine($dice);
     }
 
@@ -62,19 +58,6 @@ class Yahtzee
     }
 
     /**
-     * @param array $dice
-     * @return array
-     */
-    private function rollDice($dice)
-    {
-        $rolledDice = [];
-        for ($i = 0; $i < count($dice); $i++) {
-            $rolledDice[] = $this->dieRoller->roll();
-        }
-        return $rolledDice;
-    }
-
-    /**
      * @return array
      */
     private function rollAllDice()
@@ -84,16 +67,10 @@ class Yahtzee
 
     /**
      * @param $diceToReRun
-     * @param $dice
-     * @return mixed
+     * @return array
      */
-    private function reRunDice($diceToReRun, $dice)
+    private function reRunDice($diceToReRun)
     {
-        $reRunDice = $this->rollDice($diceToReRun);
-
-        for ($i = 0; $i < count($diceToReRun); $i++) {
-            $dice[$diceToReRun[$i] - 1] = $reRunDice[$i];
-        }
-        return $dice;
+        return $this->diceRoller->reRun($diceToReRun);
     }
 }
