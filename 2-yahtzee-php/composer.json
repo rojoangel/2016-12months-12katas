@@ -7,6 +7,11 @@
     "require-dev": {
         "phpunit/phpunit": "^5.2"
     },
+    "autoload": {
+        "psr-4" : {
+            "Yahtzee\\": ["src/Yahtzee", "tests/Yahtzee"]
+        }
+    },
     "authors": [
         {
             "name": "rojoangel",
