@@ -30,17 +30,13 @@ class Yahtzee
 
         $this->console->printLine("Category: Ones");
 
-        $dice = $this->rollDice([1, 2, 3, 4, 5]);
+        $dice = $this->rollAllDice();
         $this->printDiceLine($dice);
 
         $this->console->printLine("[1] Dice to re-run:");
 
         $diceToReRun = $this->getDiceToReRun();
-        $reRunDice = $this->rollDice($diceToReRun);
-
-        for ($i = 0; $i < count($diceToReRun); $i++) {
-            $dice[$diceToReRun[$i] - 1] = $reRunDice[$i];
-        }
+        $dice = $this->reRunDice($diceToReRun, $dice);
         $this->printDiceLine($dice);
     }
 
@@ -72,5 +68,29 @@ class Yahtzee
             $rolledDice[] = $this->dieRoller->roll();
         }
         return $rolledDice;
+    }
+
+    /**
+     * @return array
+     */
+    private function rollAllDice()
+    {
+        $dice = $this->rollDice([1, 2, 3, 4, 5]);
+        return $dice;
+    }
+
+    /**
+     * @param $diceToReRun
+     * @param $dice
+     * @return mixed
+     */
+    private function reRunDice($diceToReRun, $dice)
+    {
+        $reRunDice = $this->rollDice($diceToReRun);
+
+        for ($i = 0; $i < count($diceToReRun); $i++) {
+            $dice[$diceToReRun[$i] - 1] = $reRunDice[$i];
+        }
+        return $dice;
     }
 }
