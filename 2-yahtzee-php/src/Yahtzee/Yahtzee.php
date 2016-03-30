@@ -16,6 +16,9 @@ class Yahtzee
      */
     private $dieRoller;
 
+    /** @var DiceRoller */
+    private $diceRoller;
+
     /**
      * @param Console $console
      * @param DieRoller $dieRoller
@@ -24,6 +27,7 @@ class Yahtzee
     {
         $this->console = $console;
         $this->dieRoller = $dieRoller;
+        $this->diceRoller = new DiceRoller($dieRoller);
     }
     
     public function play() {
@@ -75,8 +79,7 @@ class Yahtzee
      */
     private function rollAllDice()
     {
-        $dice = $this->rollDice([1, 2, 3, 4, 5]);
-        return $dice;
+        return $this->diceRoller->rollAll();
     }
 
     /**
