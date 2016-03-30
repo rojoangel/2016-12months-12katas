@@ -20,9 +20,24 @@ class Yahtzee
     }
     
     public function play() {
+
         $this->console->printLine("Category: Ones");
-        $this->console->printLine("Dice: D1:2 D2:4 D3:1 D4:6 D5:1");
+
+        $dice = [2, 4, 1, 6, 1];
+        $this->printDiceLine($dice);
+
         $this->console->printLine("[1] Dice to re-run:");
-        $this->console->printLine("Dice: D1:1 D2:5 D3:1 D4:2 D5:1");
+
+        $dice = [1, 5, 1, 2, 1];
+        $this->printDiceLine($dice);
+    }
+
+    /**
+     * @param array $dice
+     */
+    private function printDiceLine($dice)
+    {
+        $this->console->printLine(sprintf(
+            "Dice: D1:%s D2:%s D3:%s D4:%s D5:%s", $dice[0], $dice[1], $dice[2], $dice[3], $dice[4]));
     }
 }
