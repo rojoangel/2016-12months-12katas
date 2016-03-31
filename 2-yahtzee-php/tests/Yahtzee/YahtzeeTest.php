@@ -7,7 +7,7 @@ class YahtzeeTest extends \PHPUnit_Framework_TestCase
     
     public function testGame()
     {
-        $console = new FakeConsole([
+        $userInterface = new FakeUserInterface([
             [1, 2, 4],
             [2 , 4]
         ]);
@@ -15,7 +15,7 @@ class YahtzeeTest extends \PHPUnit_Framework_TestCase
                                         1, 5 ,2,
                                         1,5]);
         $diceRoller = new DiceRoller($dieRoller);
-        $yahtzee = new Yahtzee($console, $diceRoller);
+        $yahtzee = new Yahtzee($userInterface, $diceRoller);
 
         $yahtzee->play();
 
@@ -27,6 +27,6 @@ class YahtzeeTest extends \PHPUnit_Framework_TestCase
             "[2] Dice to re-run:",
             "Dice: D1:1 D2:1 D3:1 D4:5 D5:1"
         ];
-        $this->assertEquals($outputLines, $console->output);
+        $this->assertEquals($outputLines, $userInterface->output);
     }
 }

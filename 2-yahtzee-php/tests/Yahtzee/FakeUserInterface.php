@@ -4,7 +4,7 @@
 namespace Yahtzee;
 
 
-class FakeConsole implements Console
+class FakeUserInterface implements UserInterface
 {
     /** @var array */
     public $output;
@@ -16,7 +16,6 @@ class FakeConsole implements Console
     private $index;
 
     /**
-     * FakeConsole constructor.
      * @param array $input
      */
     public function __construct(array $input)

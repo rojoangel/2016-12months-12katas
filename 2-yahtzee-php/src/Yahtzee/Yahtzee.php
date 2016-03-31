@@ -6,36 +6,36 @@ namespace Yahtzee;
 
 class Yahtzee
 {
-    /** @var Console */
-    private $console;
+    /** @var UserInterface */
+    private $userInterface;
     
     /** @var DiceRoller */
     private $diceRoller;
 
     /**
-     * @param Console $console
+     * @param UserInterface $userInterface
      * @param DiceRoller $diceRoller
      */
-    public function __construct(Console $console, DiceRoller $diceRoller)
+    public function __construct(UserInterface $userInterface, DiceRoller $diceRoller)
     {
-        $this->console = $console;
+        $this->userInterface = $userInterface;
         $this->diceRoller = $diceRoller;
     }
     
     public function play() {
 
-        $this->console->printLine("Category: Ones");
+        $this->userInterface->printLine("Category: Ones");
 
         $dice = $this->rollAllDice();
         $this->printDiceLine($dice);
 
-        $this->console->printLine("[1] Dice to re-run:");
+        $this->userInterface->printLine("[1] Dice to re-run:");
 
         $diceToReRun = $this->getDiceToReRun();
         $dice = $this->reRunDice($diceToReRun);
         $this->printDiceLine($dice);
 
-        $this->console->printLine("[2] Dice to re-run:");
+        $this->userInterface->printLine("[2] Dice to re-run:");
 
         $diceToReRun = $this->getDiceToReRun();
         $dice = $this->reRunDice($diceToReRun);
@@ -47,7 +47,7 @@ class Yahtzee
      */
     private function printDiceLine($dice)
     {
-        $this->console->printLine(sprintf(
+        $this->userInterface->printLine(sprintf(
             "Dice: D1:%s D2:%s D3:%s D4:%s D5:%s", $dice[0], $dice[1], $dice[2], $dice[3], $dice[4]));
     }
 
@@ -56,7 +56,7 @@ class Yahtzee
      */
     private function getDiceToReRun()
     {
-        return $this->console->readDiceToRerun();
+        return $this->userInterface->readDiceToRerun();
     }
 
     /**

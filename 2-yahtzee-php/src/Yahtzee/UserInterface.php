@@ -1,7 +1,7 @@
 <?php
 namespace Yahtzee;
 
-interface Console
+interface UserInterface
 {
     /**
      * @param $line
