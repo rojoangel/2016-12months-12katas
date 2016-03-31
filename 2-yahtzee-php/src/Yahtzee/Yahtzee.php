@@ -36,6 +36,10 @@ class Yahtzee
         $this->printDiceLine($dice);
 
         $this->console->printLine("[2] Dice to re-run:");
+
+        $diceToReRun = [2 , 4];
+        $dice = $this->reRunDice($diceToReRun);
+        $this->printDiceLine($dice);
     }
 
     /**
