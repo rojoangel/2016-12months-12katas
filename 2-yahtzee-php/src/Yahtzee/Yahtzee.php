@@ -6,6 +6,8 @@ namespace Yahtzee;
 
 class Yahtzee
 {
+    const RERUN_ATTEMPTS = 2;
+    
     /** @var UserInterface */
     private $userInterface;
     
@@ -29,7 +31,7 @@ class Yahtzee
         $dice = $this->rollAllDice();
         $this->printDiceLine($dice);
 
-        for ($reRunAttempt = 1; $reRunAttempt <= 2; $reRunAttempt++) {
+        for ($reRunAttempt = 1; $reRunAttempt <= self::RERUN_ATTEMPTS; $reRunAttempt++) {
             $diceToReRun = $this->requestDiceToReRun($reRunAttempt);
             $dice = $this->reRunDice($diceToReRun);
             $this->printDiceLine($dice);
