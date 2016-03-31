@@ -29,17 +29,11 @@ class Yahtzee
         $dice = $this->rollAllDice();
         $this->printDiceLine($dice);
 
-        $reRunAttempt = 1;
-        $diceToReRun = $this->requestDiceToReRun($reRunAttempt);
-
-        $dice = $this->reRunDice($diceToReRun);
-        $this->printDiceLine($dice);
-
-        $reRunAttempt = 2;
-        $diceToReRun = $this->requestDiceToReRun($reRunAttempt);
-
-        $dice = $this->reRunDice($diceToReRun);
-        $this->printDiceLine($dice);
+        for ($reRunAttempt = 1; $reRunAttempt <= 2; $reRunAttempt++) {
+            $diceToReRun = $this->requestDiceToReRun($reRunAttempt);
+            $dice = $this->reRunDice($diceToReRun);
+            $this->printDiceLine($dice);
+        }
 
         $this->printCategoryScore($dice);
     }
