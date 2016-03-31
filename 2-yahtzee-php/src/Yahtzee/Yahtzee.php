@@ -24,7 +24,7 @@ class Yahtzee
     
     public function play() {
 
-        $this->userInterface->printLine("Category: Ones");
+        $this->printCategory();
 
         $dice = $this->rollAllDice();
         $this->printDiceLine($dice);
@@ -42,15 +42,6 @@ class Yahtzee
         $this->printDiceLine($dice);
 
         $this->printCategoryScore($dice);
-    }
-
-    /**
-     * @param array $dice
-     */
-    private function printDiceLine($dice)
-    {
-        $this->userInterface->printLine(sprintf(
-            "Dice: D1:%s D2:%s D3:%s D4:%s D5:%s", $dice[0], $dice[1], $dice[2], $dice[3], $dice[4]));
     }
 
     /**
@@ -76,6 +67,20 @@ class Yahtzee
     private function reRunDice($diceToReRun)
     {
         return $this->diceRoller->reRun($diceToReRun);
+    }
+
+    private function printCategory()
+    {
+        $this->userInterface->printLine("Category: Ones");
+    }
+
+    /**
+     * @param array $dice
+     */
+    private function printDiceLine($dice)
+    {
+        $this->userInterface->printLine(sprintf(
+            "Dice: D1:%s D2:%s D3:%s D4:%s D5:%s", $dice[0], $dice[1], $dice[2], $dice[3], $dice[4]));
     }
 
     /**
