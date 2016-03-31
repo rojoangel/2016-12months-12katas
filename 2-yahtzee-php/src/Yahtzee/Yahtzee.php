@@ -7,7 +7,7 @@ namespace Yahtzee;
 class Yahtzee
 {
     const RERUN_ATTEMPTS = 2;
-    
+
     /** @var UserInterface */
     private $userInterface;
     
@@ -26,7 +26,8 @@ class Yahtzee
     
     public function play() {
 
-        $this->printCategory();
+        $categoryTitle = "Ones";
+        $this->printCategory($categoryTitle);
 
         $dice = $this->rollAllDice();
         $this->printDiceLine($dice);
@@ -37,7 +38,7 @@ class Yahtzee
             $this->printDiceLine($dice);
         }
 
-        $this->printCategoryScore($dice);
+        $this->printCategoryScore($categoryTitle, $dice);
     }
 
     /**
@@ -65,9 +66,12 @@ class Yahtzee
         return $this->diceRoller->reRun($diceToReRun);
     }
 
-    private function printCategory()
+    /**
+     * @param string $categoryTitle
+     */
+    private function printCategory($categoryTitle)
     {
-        $this->userInterface->printLine("Category: Ones");
+        $this->userInterface->printLine(sprintf("Category: %s", $categoryTitle));
     }
 
     /**
@@ -80,12 +84,13 @@ class Yahtzee
     }
 
     /**
+     * @param string $categoryTitle
      * @param array $dice
      */
-    private function printCategoryScore($dice)
+    private function printCategoryScore($categoryTitle, $dice)
     {
         $score = count(array_filter($dice, function ($die) { return $die == 1; }));
-        $this->userInterface->printLine(sprintf("Category Ones score: %s", $score));
+        $this->userInterface->printLine(sprintf("Category %s score: %s", $categoryTitle, $score));
     }
 
     /**
