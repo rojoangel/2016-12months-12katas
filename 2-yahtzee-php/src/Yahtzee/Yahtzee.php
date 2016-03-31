@@ -41,7 +41,7 @@ class Yahtzee
         $dice = $this->reRunDice($diceToReRun);
         $this->printDiceLine($dice);
 
-        $this->userInterface->printLine("Category Ones score: 4");
+        $this->printCategoryScore($dice);
     }
 
     /**
@@ -76,5 +76,14 @@ class Yahtzee
     private function reRunDice($diceToReRun)
     {
         return $this->diceRoller->reRun($diceToReRun);
+    }
+
+    /**
+     * @param array $dice
+     */
+    private function printCategoryScore($dice)
+    {
+        $score = count(array_filter($dice, function ($die) { return $die == 1; }));
+        $this->userInterface->printLine(sprintf("Category Ones score: %s", $score));
     }
 }
