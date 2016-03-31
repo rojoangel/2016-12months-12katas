@@ -61,7 +61,7 @@ class Yahtzee
     }
 
     /**
-     * @param $diceToReRun
+     * @param array $diceToReRun
      * @return array
      */
     private function reRunDice($diceToReRun)
@@ -96,7 +96,7 @@ class Yahtzee
     }
 
     /**
-     * @param $reRunAttempt
+     * @param int $reRunAttempt
      */
     private function printReRunAttempt($reRunAttempt)
     {
@@ -104,7 +104,7 @@ class Yahtzee
     }
 
     /**
-     * @param $reRunAttempt
+     * @param int $reRunAttempt
      * @return array
      */
     private function requestDiceToReRun($reRunAttempt)
@@ -115,9 +115,9 @@ class Yahtzee
     }
 
     /**
-     * @param $categoryValue
-     * @param $dice
-     * @return mixed
+     * @param int $categoryValue
+     * @param array $dice
+     * @return int
      */
     private function calculateCategoryScore($categoryValue, $dice)
     {
