@@ -30,16 +30,14 @@ class Yahtzee
         $this->printDiceLine($dice);
 
         $reRunAttempt = 1;
-        $this->printReRunAttempt($reRunAttempt);
+        $diceToReRun = $this->requestDiceToReRun($reRunAttempt);
 
-        $diceToReRun = $this->getDiceToReRun();
         $dice = $this->reRunDice($diceToReRun);
         $this->printDiceLine($dice);
 
         $reRunAttempt = 2;
-        $this->printReRunAttempt($reRunAttempt);
+        $diceToReRun = $this->requestDiceToReRun($reRunAttempt);
 
-        $diceToReRun = $this->getDiceToReRun();
         $dice = $this->reRunDice($diceToReRun);
         $this->printDiceLine($dice);
 
@@ -100,5 +98,16 @@ class Yahtzee
     private function printReRunAttempt($reRunAttempt)
     {
         $this->userInterface->printLine(sprintf("[%s] Dice to re-run:", $reRunAttempt));
+    }
+
+    /**
+     * @param $reRunAttempt
+     * @return array
+     */
+    private function requestDiceToReRun($reRunAttempt)
+    {
+        $this->printReRunAttempt($reRunAttempt);
+        $diceToReRun = $this->getDiceToReRun();
+        return $diceToReRun;
     }
 }
