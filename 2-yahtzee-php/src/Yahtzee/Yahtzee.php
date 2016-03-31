@@ -27,6 +27,8 @@ class Yahtzee
     public function play() {
 
         $categoryTitle = "Ones";
+        $categoryValue = 1;
+
         $this->printCategory($categoryTitle);
 
         $dice = $this->rollAllDice();
@@ -38,7 +40,7 @@ class Yahtzee
             $this->printDiceLine($dice);
         }
 
-        $this->printCategoryScore($categoryTitle, $dice);
+        $this->printCategoryScore($categoryTitle, $categoryValue, $dice);
     }
 
     /**
@@ -85,11 +87,12 @@ class Yahtzee
 
     /**
      * @param string $categoryTitle
+     * @param int $categoryValue
      * @param array $dice
      */
-    private function printCategoryScore($categoryTitle, $dice)
+    private function printCategoryScore($categoryTitle, $categoryValue, $dice)
     {
-        $score = count(array_filter($dice, function ($die) { return $die == 1; }));
+        $score = count(array_filter($dice, function ($die) use ($categoryValue) { return $die == $categoryValue; }));
         $this->userInterface->printLine(sprintf("Category %s score: %s", $categoryTitle, $score));
     }
 
