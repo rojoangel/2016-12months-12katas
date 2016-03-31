@@ -40,7 +40,8 @@ class Yahtzee
             $this->printDiceLine($dice);
         }
 
-        $this->printCategoryScore($categoryTitle, $categoryValue, $dice);
+        $categoryScore = $this->calculateCategoryScore($categoryValue, $dice);
+        $this->printCategoryScore($categoryTitle, $categoryScore);
     }
 
     /**
@@ -87,12 +88,10 @@ class Yahtzee
 
     /**
      * @param string $categoryTitle
-     * @param int $categoryValue
-     * @param array $dice
+     * @param int $categoryScore
      */
-    private function printCategoryScore($categoryTitle, $categoryValue, $dice)
+    private function printCategoryScore($categoryTitle, $categoryScore)
     {
-        $categoryScore = $this->calculateCategoryScore($categoryValue, $dice);
         $this->userInterface->printLine(sprintf("Category %s score: %s", $categoryTitle, $categoryScore));
     }
 
