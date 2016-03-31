@@ -1,10 +1,15 @@
 <?php
 namespace Yahtzee;
 
-interface Console
+interface UserInterface
 {
     /**
      * @param $line
      */
     function printLine($line);
+
+    /**
+     * @return array
+     */
+    function readDiceToRerun();
 }
