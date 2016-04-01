@@ -32,12 +32,14 @@ class Yahtzee
     
     public function play() {
 
+        $numReRuns = self::RERUN_ATTEMPTS;
+
         foreach (Category::all() as $category) {
             /** @var Category $category */
             $this->userInterface->printCategory($category);
             $this->diceRoller->rollAll();
             $this->userInterface->printDiceLine($this->diceRoller->lastRollResult());
-            $this->reRuns->doReRuns(self::RERUN_ATTEMPTS);
+            $this->reRuns->doReRuns($numReRuns);
             $this->userInterface->printCategoryScore($category, $category->calculateScore($this->diceRoller->lastRollResult()));
         }
     }
