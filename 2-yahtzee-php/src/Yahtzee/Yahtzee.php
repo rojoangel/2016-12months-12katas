@@ -30,28 +30,20 @@ class Yahtzee
 
             /** @var Category $category */
             $this->printCategory($category);
-            $dice = $this->rollAllDice();
-            $this->printDiceLine($dice);
+            $this->diceRoller->rollAll();
+            $this->printDiceLine($this->diceRoller->lastRollResult());
 
             for ($reRunAttempt = 1; $reRunAttempt <= self::RERUN_ATTEMPTS; $reRunAttempt++) {
                 $diceToReRun = $this->userInterface->requestDiceToReRun($reRunAttempt);
-                $dice = $this->diceRoller->reRun($diceToReRun);
-                $this->userInterface->printDiceLine($dice);
+                $this->diceRoller->reRun($diceToReRun);
+                $this->userInterface->printDiceLine($this->diceRoller->lastRollResult());
             }
 
-            $this->printCategoryScore($category, $category->calculateScore($dice));
+            $this->printCategoryScore($category, $category->calculateScore($this->diceRoller->lastRollResult()));
 
         }
     }
-
-    /**
-     * @return array
-     */
-    private function rollAllDice()
-    {
-        return $this->diceRoller->rollAll();
-    }
-
+    
     /**
      * @param Category $category
      */
