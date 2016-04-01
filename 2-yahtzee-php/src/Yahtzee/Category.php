@@ -31,11 +31,14 @@ class Category
     }
 
     /**
+     * @param array $dice
      * @return int
      */
-    public function getValue()
+    public function calculateScore($dice)
     {
-        return $this->value;
+        return count(array_filter($dice, function ($die) {
+            return $die == $this->value;
+        }));
     }
 
     /**

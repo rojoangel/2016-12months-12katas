@@ -39,8 +39,7 @@ class Yahtzee
                 $this->printDiceLine($dice);
             }
 
-            $categoryScore = $this->calculateCategoryScore($category->getValue(), $dice);
-            $this->printCategoryScore($category, $categoryScore);
+            $this->printCategoryScore($category, $category->calculateScore($dice));
 
         }
     }
@@ -94,18 +93,5 @@ class Yahtzee
     private function requestDiceToReRun($reRunAttempt)
     {
         return $this->userInterface->requestDiceToReRun($reRunAttempt);
-    }
-
-    /**
-     * @param int $categoryValue
-     * @param array $dice
-     * @return int
-     */
-    private function calculateCategoryScore($categoryValue, $dice)
-    {
-        $score = count(array_filter($dice, function ($die) use ($categoryValue) {
-            return $die == $categoryValue;
-        }));
-        return $score;
     }
 }
