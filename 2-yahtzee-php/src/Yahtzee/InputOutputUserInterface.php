@@ -50,14 +50,6 @@ class InputOutputUserInterface implements UserInterface
 
     /**
      * @param int $reRunAttempt
-     */
-    public function printReRunAttempt($reRunAttempt)
-    {
-        $this->output->printLine(sprintf("[%s] Dice to re-run:", $reRunAttempt));
-    }
-
-    /**
-     * @param int $reRunAttempt
      * @return array
      */
     public function requestDiceToReRun($reRunAttempt)
@@ -74,4 +66,13 @@ class InputOutputUserInterface implements UserInterface
     {
         return $this->input->readDiceToRerun();
     }
+
+    /**
+     * @param int $reRunAttempt
+     */
+    private function printReRunAttempt($reRunAttempt)
+    {
+        $this->output->printLine(sprintf("[%s] Dice to re-run:", $reRunAttempt));
+    }
+
 }
