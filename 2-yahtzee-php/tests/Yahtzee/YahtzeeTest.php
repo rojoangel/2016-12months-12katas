@@ -7,13 +7,13 @@ class YahtzeeTest extends \PHPUnit_Framework_TestCase
     
     public function testGame()
     {
+        $inputUserInterface = new FakeInputUserInterface([
+            [1, 2, 4],
+            [2, 4]
+        ]);
         $outputUserInterface = new FakeOutputUserInterface();
-        
         $userInterface = new InputOutputUserInterface(
-            [
-                [1, 2, 4],
-                [2, 4]
-            ],
+            $inputUserInterface,
             $outputUserInterface
         );
         $dieRoller = new FakeDieRoller([2, 4, 1, 6, 1,

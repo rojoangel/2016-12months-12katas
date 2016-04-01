@@ -6,23 +6,19 @@ namespace Yahtzee;
 
 class InputOutputUserInterface implements UserInterface
 {
+    /** @var InputUserInterface */
+    public $input;
+
     /** @var OutputUserInterface */
     public $output;
 
-    /** @var array */
-    public $input;
-
-    /** @var int */
-    private $index;
-
     /**
-     * @param array $input
+     * @param InputUserInterface $input
      * @param OutputUserInterface $output
      */
-    public function __construct(array $input, OutputUserInterface $output)
+    public function __construct(InputUserInterface $input, OutputUserInterface $output)
     {
         $this->input = $input;
-        $this->index = 0;
         $this->output = $output;
     }
 
@@ -34,10 +30,11 @@ class InputOutputUserInterface implements UserInterface
         $this->output->printLine($line);
     }
 
+    /**
+     * @return array
+     */
     function readDiceToRerun()
     {
-        return $this->input[$this->index++];
+        return $this->input->readDiceToRerun();
     }
-
-
 }
