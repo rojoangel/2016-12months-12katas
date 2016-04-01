@@ -21,14 +21,6 @@ class InputOutputUserInterface implements UserInterface
         $this->input = $input;
         $this->output = $output;
     }
-    
-    /**
-     * @return array
-     */
-    public function readDiceToRerun()
-    {
-        return $this->input->readDiceToRerun();
-    }
 
     /**
      * @param string $categoryTitle
@@ -75,4 +67,11 @@ class InputOutputUserInterface implements UserInterface
         return $diceToReRun;
     }
 
+    /**
+     * @return array
+     */
+    private function readDiceToRerun()
+    {
+        return $this->input->readDiceToRerun();
+    }
 }

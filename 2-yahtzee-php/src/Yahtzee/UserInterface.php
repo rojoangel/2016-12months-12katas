@@ -4,11 +4,6 @@ namespace Yahtzee;
 interface UserInterface
 {
     /**
-     * @return array
-     */
-    function readDiceToRerun();
-
-    /**
      * @param string $categoryTitle
      */
     function printCategory($categoryTitle);
