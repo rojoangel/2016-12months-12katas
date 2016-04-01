@@ -21,15 +21,7 @@ class InputOutputUserInterface implements UserInterface
         $this->input = $input;
         $this->output = $output;
     }
-
-    /**
-     * @param string $line
-     */
-    public function printLine($line)
-    {
-        $this->output->printLine($line);
-    }
-
+    
     /**
      * @return array
      */
