@@ -9,7 +9,9 @@ class YahtzeeTest extends \PHPUnit_Framework_TestCase
     {
         $inputUserInterface = new FakeInputUserInterface([
             [1, 2, 4],
-            [2, 4]
+            [2, 4],
+            [2, 5],
+            [3, 4, 5]
         ]);
         $outputUserInterface = new FakeOutputUserInterface();
         $userInterface = new InputOutputUserInterface(
@@ -18,7 +20,10 @@ class YahtzeeTest extends \PHPUnit_Framework_TestCase
         );
         $dieRoller = new FakeDieRoller([2, 4, 1, 6, 1,
                                         1, 5 ,2,
-                                        1,5]);
+                                        1,5,
+                                        2, 4, 1, 6, 1,
+                                        2, 3,
+                                        6, 1, 2]);
         $diceRoller = new DiceRoller($dieRoller);
         $yahtzee = new Yahtzee($userInterface, $diceRoller);
 
@@ -31,7 +36,14 @@ class YahtzeeTest extends \PHPUnit_Framework_TestCase
             "Dice: D1:1 D2:5 D3:1 D4:2 D5:1",
             "[2] Dice to re-run:",
             "Dice: D1:1 D2:1 D3:1 D4:5 D5:1",
-            "Category Ones score: 4"
+            "Category Ones score: 4",
+            "Category: Twos",
+            "Dice: D1:2 D2:4 D3:1 D4:6 D5:1",
+            "[1] Dice to re-run:",
+            "Dice: D1:2 D2:2 D3:1 D4:6 D5:3",
+            "[2] Dice to re-run:",
+            "Dice: D1:2 D2:2 D3:6 D4:1 D5:2",
+            "Category Twos score: 3"
         ];
         $this->assertEquals($outputLines, $outputUserInterface->output);
     }
