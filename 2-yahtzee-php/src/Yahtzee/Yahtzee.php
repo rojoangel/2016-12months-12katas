@@ -26,30 +26,22 @@ class Yahtzee
     
     public function play() {
 
-        $categoryTitle = "Ones";
-        $categoryValue = 1;
+        foreach (Category::all() as $category) {
 
-        $this->printCategory($categoryTitle);
-
-        $dice = $this->rollAllDice();
-        $this->printDiceLine($dice);
-
-        for ($reRunAttempt = 1; $reRunAttempt <= self::RERUN_ATTEMPTS; $reRunAttempt++) {
-            $diceToReRun = $this->requestDiceToReRun($reRunAttempt);
-            $dice = $this->reRunDice($diceToReRun);
+            /** @var Category $category */
+            $this->printCategory($category);
+            $dice = $this->rollAllDice();
             $this->printDiceLine($dice);
+
+            for ($reRunAttempt = 1; $reRunAttempt <= self::RERUN_ATTEMPTS; $reRunAttempt++) {
+                $diceToReRun = $this->requestDiceToReRun($reRunAttempt);
+                $dice = $this->reRunDice($diceToReRun);
+                $this->printDiceLine($dice);
+            }
+
+            $this->printCategoryScore($category, $category->calculateScore($dice));
+
         }
-
-        $categoryScore = $this->calculateCategoryScore($categoryValue, $dice);
-        $this->printCategoryScore($categoryTitle, $categoryScore);
-    }
-
-    /**
-     * @return array
-     */
-    private function getDiceToReRun()
-    {
-        return $this->userInterface->readDiceToRerun();
     }
 
     /**
@@ -70,11 +62,11 @@ class Yahtzee
     }
 
     /**
-     * @param string $categoryTitle
+     * @param Category $category
      */
-    private function printCategory($categoryTitle)
+    private function printCategory($category)
     {
-        $this->userInterface->printLine(sprintf("Category: %s", $categoryTitle));
+        $this->userInterface->printCategory($category);
     }
 
     /**
@@ -82,25 +74,16 @@ class Yahtzee
      */
     private function printDiceLine($dice)
     {
-        $this->userInterface->printLine(sprintf(
-            "Dice: D1:%s D2:%s D3:%s D4:%s D5:%s", $dice[0], $dice[1], $dice[2], $dice[3], $dice[4]));
+        $this->userInterface->printDiceLine($dice);
     }
 
     /**
-     * @param string $categoryTitle
+     * @param Category $category
      * @param int $categoryScore
      */
-    private function printCategoryScore($categoryTitle, $categoryScore)
+    private function printCategoryScore($category, $categoryScore)
     {
-        $this->userInterface->printLine(sprintf("Category %s score: %s", $categoryTitle, $categoryScore));
-    }
-
-    /**
-     * @param int $reRunAttempt
-     */
-    private function printReRunAttempt($reRunAttempt)
-    {
-        $this->userInterface->printLine(sprintf("[%s] Dice to re-run:", $reRunAttempt));
+        $this->userInterface->printCategoryScore($category, $categoryScore);
     }
 
     /**
@@ -109,21 +92,6 @@ class Yahtzee
      */
     private function requestDiceToReRun($reRunAttempt)
     {
-        $this->printReRunAttempt($reRunAttempt);
-        $diceToReRun = $this->getDiceToReRun();
-        return $diceToReRun;
-    }
-
-    /**
-     * @param int $categoryValue
-     * @param array $dice
-     * @return int
-     */
-    private function calculateCategoryScore($categoryValue, $dice)
-    {
-        $score = count(array_filter($dice, function ($die) use ($categoryValue) {
-            return $die == $categoryValue;
-        }));
-        return $score;
+        return $this->userInterface->requestDiceToReRun($reRunAttempt);
     }
 }
