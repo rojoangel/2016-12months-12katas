@@ -34,36 +34,11 @@ class Yahtzee
 
         foreach (Category::all() as $category) {
             /** @var Category $category */
-            $this->printCategory($category);
+            $this->userInterface->printCategory($category);
             $this->diceRoller->rollAll();
-            $this->printDiceLine($this->diceRoller->lastRollResult());
+            $this->userInterface->printDiceLine($this->diceRoller->lastRollResult());
             $this->reRuns->doReRuns(self::RERUN_ATTEMPTS);
-            $this->printCategoryScore($category, $category->calculateScore($this->diceRoller->lastRollResult()));
+            $this->userInterface->printCategoryScore($category, $category->calculateScore($this->diceRoller->lastRollResult()));
         }
-    }
-
-    /**
-     * @param Category $category
-     */
-    private function printCategory($category)
-    {
-        $this->userInterface->printCategory($category);
-    }
-
-    /**
-     * @param array $dice
-     */
-    private function printDiceLine($dice)
-    {
-        $this->userInterface->printDiceLine($dice);
-    }
-
-    /**
-     * @param Category $category
-     * @param int $categoryScore
-     */
-    private function printCategoryScore($category, $categoryScore)
-    {
-        $this->userInterface->printCategoryScore($category, $categoryScore);
     }
 }
