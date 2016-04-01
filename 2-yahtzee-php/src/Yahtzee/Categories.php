@@ -4,18 +4,15 @@
 namespace Yahtzee;
 
 
-class Yahtzee
+class Categories
 {
-    const RERUN_ATTEMPTS = 2;
-
     /** @var UserInterface */
     private $userInterface;
-    
+
     /** @var DiceRoller */
     private $diceRoller;
-    /**
-     * @var ReRuns
-     */
+
+    /** @var ReRuns */
     private $reRuns;
 
     /**
@@ -29,18 +26,19 @@ class Yahtzee
         $this->diceRoller = $diceRoller;
         $this->reRuns = $reRuns;
     }
-    
-    public function play() {
-
-        $this->playCategories(self::RERUN_ATTEMPTS);
-    }
 
     /**
      * @param int $numReRuns
      */
-    private function playCategories($numReRuns)
+    public function play($numReRuns)
     {
-        $categories = new Categories($this->userInterface, $this->diceRoller, $this->reRuns);
-        $categories->play($numReRuns);
+        foreach (Category::all() as $category) {
+            /** @var Category $category */
+            $this->userInterface->printCategory($category);
+            $this->diceRoller->rollAll();
+            $this->userInterface->printDiceLine($this->diceRoller->lastRollResult());
+            $this->reRuns->doReRuns($numReRuns);
+            $this->userInterface->printCategoryScore($category, $category->calculateScore($this->diceRoller->lastRollResult()));
+        }
     }
 }
