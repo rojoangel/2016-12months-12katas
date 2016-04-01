@@ -43,15 +43,7 @@ class Yahtzee
         $categoryScore = $this->calculateCategoryScore($categoryValue, $dice);
         $this->printCategoryScore($categoryTitle, $categoryScore);
     }
-
-    /**
-     * @return array
-     */
-    private function getDiceToReRun()
-    {
-        return $this->userInterface->readDiceToRerun();
-    }
-
+    
     /**
      * @return array
      */
