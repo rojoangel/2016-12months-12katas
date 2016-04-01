@@ -108,9 +108,7 @@ class Yahtzee
      */
     private function requestDiceToReRun($reRunAttempt)
     {
-        $this->printReRunAttempt($reRunAttempt);
-        $diceToReRun = $this->getDiceToReRun();
-        return $diceToReRun;
+        return $this->userInterface->requestDiceToReRun($reRunAttempt);
     }
 
     /**

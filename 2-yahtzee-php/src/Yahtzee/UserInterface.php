@@ -33,4 +33,10 @@ interface UserInterface
      * @param int $reRunAttempt
      */
     function printReRunAttempt($reRunAttempt);
+
+    /**
+     * @param int $reRunAttempt
+     * @return array
+     */
+    function requestDiceToReRun($reRunAttempt);
 }
