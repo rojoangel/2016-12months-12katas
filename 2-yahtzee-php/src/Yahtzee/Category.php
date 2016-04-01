@@ -48,7 +48,8 @@ class Category
     {
         return [
             new self('Ones', 1),
-            new self('Twos', 2)
+            new self('Twos', 2),
+            new self('Threes', 3)
         ];
     }
 }
