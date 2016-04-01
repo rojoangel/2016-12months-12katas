@@ -26,39 +26,28 @@ class Yahtzee
     
     public function play() {
 
-        $categoryTitle = "Ones";
-        $categoryValue = 1;
+        $categories = [
+            ['name' => 'Ones', 'value' => 1],
+            ['name' => 'Twos', 'value' => 2]
+        ];
 
-        $this->printCategory($categoryTitle);
+        foreach ($categories as $category) {
 
-        $dice = $this->rollAllDice();
-        $this->printDiceLine($dice);
+            $this->printCategory($category['name']);
 
-        for ($reRunAttempt = 1; $reRunAttempt <= self::RERUN_ATTEMPTS; $reRunAttempt++) {
-            $diceToReRun = $this->requestDiceToReRun($reRunAttempt);
-            $dice = $this->reRunDice($diceToReRun);
+            $dice = $this->rollAllDice();
             $this->printDiceLine($dice);
+
+            for ($reRunAttempt = 1; $reRunAttempt <= self::RERUN_ATTEMPTS; $reRunAttempt++) {
+                $diceToReRun = $this->requestDiceToReRun($reRunAttempt);
+                $dice = $this->reRunDice($diceToReRun);
+                $this->printDiceLine($dice);
+            }
+
+            $categoryScore = $this->calculateCategoryScore($category['value'], $dice);
+            $this->printCategoryScore($category['name'], $categoryScore);
+
         }
-
-        $categoryScore = $this->calculateCategoryScore($categoryValue, $dice);
-        $this->printCategoryScore($categoryTitle, $categoryScore);
-
-        $categoryTitle = "Twos";
-        $categoryValue = 2;
-
-        $this->printCategory($categoryTitle);
-
-        $dice = $this->rollAllDice();
-        $this->printDiceLine($dice);
-
-        for ($reRunAttempt = 1; $reRunAttempt <= self::RERUN_ATTEMPTS; $reRunAttempt++) {
-            $diceToReRun = $this->requestDiceToReRun($reRunAttempt);
-            $dice = $this->reRunDice($diceToReRun);
-            $this->printDiceLine($dice);
-        }
-
-        $categoryScore = $this->calculateCategoryScore($categoryValue, $dice);
-        $this->printCategoryScore($categoryTitle, $categoryScore);
     }
 
     /**
