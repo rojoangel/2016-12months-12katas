@@ -4,9 +4,9 @@
 namespace Yahtzee;
 
 
-class FakeUserInterface implements UserInterface
+class InputOutputUserInterface implements UserInterface
 {
-    /** @var array */
+    /** @var OutputUserInterface */
     public $output;
 
     /** @var array */
@@ -17,11 +17,13 @@ class FakeUserInterface implements UserInterface
 
     /**
      * @param array $input
+     * @param OutputUserInterface $output
      */
-    public function __construct(array $input)
+    public function __construct(array $input, OutputUserInterface $output)
     {
         $this->input = $input;
         $this->index = 0;
+        $this->output = $output;
     }
 
     /**
@@ -29,7 +31,7 @@ class FakeUserInterface implements UserInterface
      */
     public function printLine($line)
     {
-        $this->output[] = $line;
+        $this->output->printLine($line);
     }
 
     function readDiceToRerun()
