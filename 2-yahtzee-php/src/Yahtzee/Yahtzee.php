@@ -74,7 +74,7 @@ class Yahtzee
      */
     private function printCategory($categoryTitle)
     {
-        $this->userInterface->printLine(sprintf("Category: %s", $categoryTitle));
+        $this->userInterface->printCategory($categoryTitle);
     }
 
     /**
@@ -82,8 +82,7 @@ class Yahtzee
      */
     private function printDiceLine($dice)
     {
-        $this->userInterface->printLine(sprintf(
-            "Dice: D1:%s D2:%s D3:%s D4:%s D5:%s", $dice[0], $dice[1], $dice[2], $dice[3], $dice[4]));
+        $this->userInterface->printDiceLine($dice);
     }
 
     /**
@@ -92,7 +91,7 @@ class Yahtzee
      */
     private function printCategoryScore($categoryTitle, $categoryScore)
     {
-        $this->userInterface->printLine(sprintf("Category %s score: %s", $categoryTitle, $categoryScore));
+        $this->userInterface->printCategoryScore($categoryTitle, $categoryScore);
     }
 
     /**
@@ -100,7 +99,7 @@ class Yahtzee
      */
     private function printReRunAttempt($reRunAttempt)
     {
-        $this->userInterface->printLine(sprintf("[%s] Dice to re-run:", $reRunAttempt));
+        $this->userInterface->printReRunAttempt($reRunAttempt);
     }
 
     /**
