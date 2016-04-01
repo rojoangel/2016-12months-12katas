@@ -34,6 +34,14 @@ class Yahtzee
 
         $numReRuns = self::RERUN_ATTEMPTS;
 
+        $this->playCategories($numReRuns);
+    }
+
+    /**
+     * @param $numReRuns
+     */
+    private function playCategories($numReRuns)
+    {
         foreach (Category::all() as $category) {
             /** @var Category $category */
             $this->userInterface->printCategory($category);
