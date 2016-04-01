@@ -33,7 +33,7 @@ class Yahtzee
             $this->diceRoller->rollAll();
             $this->printDiceLine($this->diceRoller->lastRollResult());
 
-            $this->doReRuns();
+            $this->doReRuns(self::RERUN_ATTEMPTS);
 
             $this->printCategoryScore($category, $category->calculateScore($this->diceRoller->lastRollResult()));
 
@@ -65,12 +65,12 @@ class Yahtzee
         $this->userInterface->printCategoryScore($category, $categoryScore);
     }
 
-    private function doReRuns()
+    /**
+     * @param $numReRuns
+     */
+    private function doReRuns($numReRuns)
     {
-        for ($reRunAttempt = 1; $reRunAttempt <= self::RERUN_ATTEMPTS; $reRunAttempt++) {
-            $diceToReRun = $this->userInterface->requestDiceToReRun($reRunAttempt);
-            $this->diceRoller->reRun($diceToReRun);
-            $this->userInterface->printDiceLine($this->diceRoller->lastRollResult());
-        }
+        $reruns = new ReRuns($this->userInterface, $this->diceRoller);
+        $reruns->doReRuns($numReRuns);
     }
 }
