@@ -7,7 +7,7 @@ namespace Yahtzee;
 class DiceRoller
 {
     /** @var array */
-    private $dice;
+    private $rollResult;
     
     /** @var DieRoller */
     private $dieRoller;
@@ -18,36 +18,37 @@ class DiceRoller
     public function __construct(DieRoller $dieRoller)
     {
         $this->dieRoller = $dieRoller;
+        $this->rollResult = [];
     }
-    
+
     /**
      * @return array
      */
+    public function lastRollResult()
+    {
+        return $this->rollResult;
+    }
+
     public function rollAll()
     {
         $this->rollDice([1, 2, 3, 4, 5]);
-        return $this->dice;
     }
 
     /**
      * @param $diceToReRun
-     * @return mixed
      */
     public function reRun($diceToReRun)
     {
         $this->rollDice($diceToReRun);
-        return $this->dice;
     }
 
     /**
      * @param array $diceToRoll
-     * @return array
      */
     private function rollDice($diceToRoll)
     {
         foreach ($diceToRoll as $die) {
-            $this->dice[$die - 1] = $this->dieRoller->roll();
+            $this->rollResult[$die - 1] = $this->dieRoller->roll();
         }
-        return $this->dice;
     }
 }

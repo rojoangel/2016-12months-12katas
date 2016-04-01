@@ -8,90 +8,25 @@ class Yahtzee
 {
     const RERUN_ATTEMPTS = 2;
 
-    /** @var UserInterface */
-    private $userInterface;
-    
-    /** @var DiceRoller */
-    private $diceRoller;
+    /** @var Categories */
+    private $categories;
+
+    /** @var OutputUserInterface */
+    private $outputUserInterface;
 
     /**
-     * @param UserInterface $userInterface
-     * @param DiceRoller $diceRoller
+     * @param Categories $categories
+     * @param OutputUserInterface $outputUserInterface
      */
-    public function __construct(UserInterface $userInterface, DiceRoller $diceRoller)
+    public function __construct(Categories $categories, OutputUserInterface $outputUserInterface)
     {
-        $this->userInterface = $userInterface;
-        $this->diceRoller = $diceRoller;
+        $this->categories = $categories;
+        $this->outputUserInterface = $outputUserInterface;
     }
     
     public function play() {
 
-        foreach (Category::all() as $category) {
-
-            /** @var Category $category */
-            $this->printCategory($category);
-            $dice = $this->rollAllDice();
-            $this->printDiceLine($dice);
-
-            for ($reRunAttempt = 1; $reRunAttempt <= self::RERUN_ATTEMPTS; $reRunAttempt++) {
-                $diceToReRun = $this->requestDiceToReRun($reRunAttempt);
-                $dice = $this->reRunDice($diceToReRun);
-                $this->printDiceLine($dice);
-            }
-
-            $this->printCategoryScore($category, $category->calculateScore($dice));
-
-        }
-    }
-
-    /**
-     * @return array
-     */
-    private function rollAllDice()
-    {
-        return $this->diceRoller->rollAll();
-    }
-
-    /**
-     * @param array $diceToReRun
-     * @return array
-     */
-    private function reRunDice($diceToReRun)
-    {
-        return $this->diceRoller->reRun($diceToReRun);
-    }
-
-    /**
-     * @param Category $category
-     */
-    private function printCategory($category)
-    {
-        $this->userInterface->printCategory($category);
-    }
-
-    /**
-     * @param array $dice
-     */
-    private function printDiceLine($dice)
-    {
-        $this->userInterface->printDiceLine($dice);
-    }
-
-    /**
-     * @param Category $category
-     * @param int $categoryScore
-     */
-    private function printCategoryScore($category, $categoryScore)
-    {
-        $this->userInterface->printCategoryScore($category, $categoryScore);
-    }
-
-    /**
-     * @param int $reRunAttempt
-     * @return array
-     */
-    private function requestDiceToReRun($reRunAttempt)
-    {
-        return $this->userInterface->requestDiceToReRun($reRunAttempt);
+        $this->categories->play(self::RERUN_ATTEMPTS);
+        $this->outputUserInterface->printLine("Yahtzee score");
     }
 }
