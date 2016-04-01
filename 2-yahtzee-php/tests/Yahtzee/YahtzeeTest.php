@@ -30,7 +30,8 @@ class YahtzeeTest extends \PHPUnit_Framework_TestCase
                                         5, 1, 3, 2, 3,
                                         6, 2, 4]);
         $diceRoller = new DiceRoller($dieRoller);
-        $yahtzee = new Yahtzee($userInterface, $diceRoller);
+        $reRuns = new ReRuns($userInterface, $diceRoller);
+        $yahtzee = new Yahtzee($userInterface, $diceRoller, $reRuns);
 
         $yahtzee->play();
 
