@@ -4,9 +4,9 @@ namespace Yahtzee;
 interface UserInterface
 {
     /**
-     * @param string $categoryTitle
+     * @param Category $category
      */
-    function printCategory($categoryTitle);
+    function printCategory($category);
 
     /**
      * @param array $dice
@@ -14,10 +14,10 @@ interface UserInterface
     function printDiceLine($dice);
 
     /**
-     * @param string $categoryTitle
+     * @param Category $category
      * @param int $categoryScore
      */
-    function printCategoryScore($categoryTitle, $categoryScore);
+    function printCategoryScore($category, $categoryScore);
 
     /**
      * @param int $reRunAttempt

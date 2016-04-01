@@ -23,11 +23,11 @@ class InputOutputUserInterface implements UserInterface
     }
 
     /**
-     * @param string $categoryTitle
+     * @param Category $category
      */
-    public function printCategory($categoryTitle)
+    public function printCategory($category)
     {
-        $this->output->printLine(sprintf("Category: %s", $categoryTitle));
+        $this->output->printLine(sprintf("Category: %s", $category));
     }
 
     /**
@@ -40,12 +40,12 @@ class InputOutputUserInterface implements UserInterface
     }
 
     /**
-     * @param string $categoryTitle
+     * @param Category $category
      * @param int $categoryScore
      */
-    public function printCategoryScore($categoryTitle, $categoryScore)
+    public function printCategoryScore($category, $categoryScore)
     {
-        $this->output->printLine(sprintf("Category %s score: %s", $categoryTitle, $categoryScore));
+        $this->output->printLine(sprintf("Category %s score: %s", $category, $categoryScore));
     }
 
     /**

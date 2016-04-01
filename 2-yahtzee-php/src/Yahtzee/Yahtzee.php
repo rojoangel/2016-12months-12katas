@@ -26,15 +26,10 @@ class Yahtzee
     
     public function play() {
 
-        $categories = [
-            ['name' => 'Ones', 'value' => 1],
-            ['name' => 'Twos', 'value' => 2]
-        ];
+        foreach (Category::all() as $category) {
 
-        foreach ($categories as $category) {
-
-            $this->printCategory($category['name']);
-
+            /** @var Category $category */
+            $this->printCategory($category);
             $dice = $this->rollAllDice();
             $this->printDiceLine($dice);
 
@@ -44,8 +39,8 @@ class Yahtzee
                 $this->printDiceLine($dice);
             }
 
-            $categoryScore = $this->calculateCategoryScore($category['value'], $dice);
-            $this->printCategoryScore($category['name'], $categoryScore);
+            $categoryScore = $this->calculateCategoryScore($category->getValue(), $dice);
+            $this->printCategoryScore($category, $categoryScore);
 
         }
     }
@@ -68,11 +63,11 @@ class Yahtzee
     }
 
     /**
-     * @param string $categoryTitle
+     * @param Category $category
      */
-    private function printCategory($categoryTitle)
+    private function printCategory($category)
     {
-        $this->userInterface->printCategory($categoryTitle);
+        $this->userInterface->printCategory($category);
     }
 
     /**
@@ -84,12 +79,12 @@ class Yahtzee
     }
 
     /**
-     * @param string $categoryTitle
+     * @param Category $category
      * @param int $categoryScore
      */
-    private function printCategoryScore($categoryTitle, $categoryScore)
+    private function printCategoryScore($category, $categoryScore)
     {
-        $this->userInterface->printCategoryScore($categoryTitle, $categoryScore);
+        $this->userInterface->printCategoryScore($category, $categoryScore);
     }
 
     /**
