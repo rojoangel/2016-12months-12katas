@@ -13,34 +13,29 @@ class Yahtzee
     
     /** @var DiceRoller */
     private $diceRoller;
-    /**
-     * @var ReRuns
-     */
+
+    /**@var ReRuns */
     private $reRuns;
+
+    /** @var Categories */
+    private $categories;
 
     /**
      * @param UserInterface $userInterface
      * @param DiceRoller $diceRoller
      * @param ReRuns $reRuns
+     * @param Categories $categories
      */
-    public function __construct(UserInterface $userInterface, DiceRoller $diceRoller, ReRuns $reRuns)
+    public function __construct(UserInterface $userInterface, DiceRoller $diceRoller, ReRuns $reRuns, Categories $categories)
     {
         $this->userInterface = $userInterface;
         $this->diceRoller = $diceRoller;
         $this->reRuns = $reRuns;
+        $this->categories = $categories;
     }
     
     public function play() {
 
-        $this->playCategories(self::RERUN_ATTEMPTS);
-    }
-
-    /**
-     * @param int $numReRuns
-     */
-    private function playCategories($numReRuns)
-    {
-        $categories = new Categories($this->userInterface, $this->diceRoller, $this->reRuns);
-        $categories->play($numReRuns);
+        $this->categories->play(self::RERUN_ATTEMPTS);
     }
 }
