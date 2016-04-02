@@ -33,14 +33,6 @@ class Yahtzee
     public function play() {
 
         $this->categories->play(self::RERUN_ATTEMPTS);
-        $this->printScoresSummary($this->scoresSummary);
-    }
-
-    /**
-     * @param ScoresSummary $scoresSummary
-     */
-    private function printScoresSummary(ScoresSummary $scoresSummary)
-    {
-        $this->userInterface->printScoresSummary($scoresSummary);
+        $this->categories->printScoresSummary();
     }
 }
