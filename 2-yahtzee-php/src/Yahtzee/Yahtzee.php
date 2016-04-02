@@ -11,23 +11,12 @@ class Yahtzee
     /** @var Categories */
     private $categories;
 
-
-    /** @var UserInterface */
-    private $userInterface;
-
-    /** @var ScoresSummary */
-    private $scoresSummary;
-
     /**
      * @param Categories $categories
-     * @param UserInterface $userInterface
-     * @param ScoresSummary $scoresSummary
      */
-    public function __construct(Categories $categories, UserInterface $userInterface, ScoresSummary $scoresSummary)
+    public function __construct(Categories $categories)
     {
         $this->categories = $categories;
-        $this->userInterface = $userInterface;
-        $this->scoresSummary = $scoresSummary;
     }
     
     public function play() {
