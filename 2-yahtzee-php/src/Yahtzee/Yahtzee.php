@@ -28,13 +28,9 @@ class Yahtzee
     public function play() {
 
         $this->categories->play(self::RERUN_ATTEMPTS);
-        $maxScores = [
-            ['category' => 'Ones', 'maxScore' => 4],
-            ['category' => 'Twos', 'maxScore' => 3],
-            ['category' => 'Threes', 'maxScore' => 2]
-        ];
-        $finalScore = 9;
-        $this->printMaxScores($maxScores, $finalScore);
+        $scoresSummary = new ScoresSummary();
+        
+        $this->printMaxScores($scoresSummary->getMaxScores(), $scoresSummary->getfinalScore());
     }
 
     /**
