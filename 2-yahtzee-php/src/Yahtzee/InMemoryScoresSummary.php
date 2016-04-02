@@ -9,13 +9,9 @@ class InMemoryScoresSummary implements ScoresSummary
     /** @var array */
     private $maxScores;
 
-    /** @var int */
-    private $finalScore;
-
     public function __construct()
     {
         $this->maxScores = [];
-        $this->finalScore = 9;
     }
 
     /**
@@ -31,7 +27,11 @@ class InMemoryScoresSummary implements ScoresSummary
      */
     public function getFinalScore()
     {
-        return $this->finalScore;
+        $finalScore = 0;
+        foreach($this->maxScores as $maxScore) {
+            $finalScore = $finalScore + $maxScore;
+        }
+        return $finalScore;
     }
 
     /**

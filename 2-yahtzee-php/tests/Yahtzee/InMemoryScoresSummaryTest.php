@@ -21,4 +21,16 @@ class InMemoryScoresSummaryTest extends \PHPUnit_Framework_TestCase
         ];
         $this->assertEquals($expectedMaxScores, $scoresSummary->getMaxScores());
     }
+
+    public function testFinalScore()
+    {
+        $scoresSummary = new InMemoryScoresSummary();
+        $scoresSummary->registerScore(Category::Ones(), 1);
+        $scoresSummary->registerScore(Category::Twos(), 3);
+        $scoresSummary->registerScore(Category::Threes(), 4);
+
+        $this->assertEquals(8, $scoresSummary->getFinalScore());
+    }
+
+
 }
