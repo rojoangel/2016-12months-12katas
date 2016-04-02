@@ -37,8 +37,9 @@ class Yahtzee
             ['category' => 'Ones', 'maxScore' => 4],
             ['category' => 'Twos', 'maxScore' => 3]
         ];
-        $this->printCategoryScore($maxScores[0]['category'], $maxScores[0]['maxScore']);
-        $this->printCategoryScore($maxScores[1]['category'], $maxScores[1]['maxScore']);
+        foreach ($maxScores as $maxScore) {
+            $this->printCategoryScore($maxScore['category'], $maxScore['maxScore']);
+        }
     }
 
     /**
