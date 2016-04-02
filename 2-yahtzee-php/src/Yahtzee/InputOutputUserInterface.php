@@ -12,14 +12,22 @@ class InputOutputUserInterface implements UserInterface
     /** @var OutputUserInterface */
     public $output;
 
+    /** @var UserInputParser */
+    private $userInputParser;
+
     /**
      * @param InputUserInterface $input
      * @param OutputUserInterface $output
+     * @param UserInputParser $userInputParser
      */
-    public function __construct(InputUserInterface $input, OutputUserInterface $output)
+    public function __construct(
+        InputUserInterface $input,
+        OutputUserInterface $output,
+        UserInputParser $userInputParser)
     {
         $this->input = $input;
         $this->output = $output;
+        $this->userInputParser = $userInputParser;
     }
 
     /**
@@ -64,8 +72,7 @@ class InputOutputUserInterface implements UserInterface
      */
     private function readDiceToRerun()
     {
-        $userInputParser = new UserInputParser();
-        return $userInputParser->parse($this->input->readDiceToRerun());
+        return $this->userInputParser->parse($this->input->readDiceToRerun());
     }
 
     /**

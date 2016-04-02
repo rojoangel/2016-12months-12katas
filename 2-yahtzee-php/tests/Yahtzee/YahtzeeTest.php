@@ -15,10 +15,12 @@ class YahtzeeTest extends \PHPUnit_Framework_TestCase
             "D1 D2 D3 D4 D5",
             "D1 D2 D4"
         ]);
+        $userInputParser = new UserInputParser();
         $outputUserInterface = new FakeOutputUserInterface();
         $userInterface = new InputOutputUserInterface(
             $inputUserInterface,
-            $outputUserInterface
+            $outputUserInterface,
+            $userInputParser
         );
         $dieRoller = new FakeDieRoller([2, 4, 1, 6, 1,
                                         1, 5 ,2,
