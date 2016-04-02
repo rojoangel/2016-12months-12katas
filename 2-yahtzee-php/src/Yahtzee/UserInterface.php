@@ -24,9 +24,10 @@ interface UserInterface
      * @return array
      */
     function requestDiceToReRun($reRunAttempt);
-    
+
     /**
      * @param array $maxScores
+     * @param int $finalScore
      */
-    function printMaxScores($maxScores);
+    function printMaxScores($maxScores, $finalScore);
 }
