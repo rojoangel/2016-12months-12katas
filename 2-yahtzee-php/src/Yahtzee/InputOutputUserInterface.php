@@ -7,10 +7,10 @@ namespace Yahtzee;
 class InputOutputUserInterface implements UserInterface
 {
     /** @var InputUserInterface */
-    public $input;
+    private $input;
 
     /** @var OutputUserInterface */
-    public $output;
+    private $output;
 
     /** @var UserInputParser */
     private $userInputParser;
@@ -39,12 +39,15 @@ class InputOutputUserInterface implements UserInterface
     }
 
     /**
-     * @param array $dice
+     * @param Dice[] $dice
      */
     public function printDiceLine($dice)
     {
-        $this->output->printLine(sprintf(
-            "Dice: D1:%s D2:%s D3:%s D4:%s D5:%s", $dice[0], $dice[1], $dice[2], $dice[3], $dice[4]));
+        $formattedDice = "Dice:";
+        foreach ($dice as $die => $value) {
+            $formattedDice  = $formattedDice . sprintf(" %s:%s", $die, $value);
+        }
+        $this->output->printLine($formattedDice);
     }
 
     /**
@@ -58,7 +61,7 @@ class InputOutputUserInterface implements UserInterface
 
     /**
      * @param int $reRunAttempt
-     * @return array
+     * @return Dice[]
      */
     public function requestDiceToReRun($reRunAttempt)
     {
@@ -68,11 +71,11 @@ class InputOutputUserInterface implements UserInterface
     }
 
     /**
-     * @return array
+     * @return Dice[]
      */
     private function readDiceToRerun()
     {
-        return $this->userInputParser->parse($this->input->readDiceToRerun());
+        return $this->userInputParser->parse($this->input->readLine());
     }
 
     /**

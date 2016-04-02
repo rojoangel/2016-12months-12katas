@@ -25,7 +25,7 @@ class FakeInputUserInterface implements InputUserInterface
     /**
      * @return array
      */
-    function readDiceToRerun()
+    function readLine()
     {
         return $this->input[$this->index++];
     }

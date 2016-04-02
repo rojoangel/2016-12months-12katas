@@ -3,5 +3,8 @@ namespace Yahtzee;
 
 interface InputUserInterface
 {
-    function readDiceToRerun();
+    /**
+     * @return string
+     */
+    function readLine();
 }
