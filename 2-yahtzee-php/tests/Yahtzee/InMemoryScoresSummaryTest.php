@@ -4,12 +4,12 @@
 namespace Yahtzee;
 
 
-class ScoresSummaryTest extends \PHPUnit_Framework_TestCase
+class InMemoryScoresSummaryTest extends \PHPUnit_Framework_TestCase
 {
 
     public function testRegisterScore()
     {
-        $scoresSummary = new ScoresSummary();
+        $scoresSummary = new InMemoryScoresSummary();
         $scoresSummary->registerScore(Category::Ones(), 1);
         $scoresSummary->registerScore(Category::Twos(), 3);
         $scoresSummary->registerScore(Category::Threes(), 4);
