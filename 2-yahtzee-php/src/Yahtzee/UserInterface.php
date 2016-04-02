@@ -24,13 +24,7 @@ interface UserInterface
      * @return array
      */
     function requestDiceToReRun($reRunAttempt);
-
-    /**
-     * @param string $category
-     * @param int $maxScore
-     */
-    function printCategoryMaxScore($category, $maxScore);
-
+    
     /**
      * @param array $maxScores
      */

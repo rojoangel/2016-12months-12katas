@@ -79,7 +79,7 @@ class InputOutputUserInterface implements UserInterface
      * @param string $category
      * @param int $maxScore
      */
-    public function printCategoryMaxScore($category, $maxScore)
+    private function printCategoryMaxScore($category, $maxScore)
     {
         $this->output->printLine(sprintf("%s: %s", $category, $maxScore));
     }
