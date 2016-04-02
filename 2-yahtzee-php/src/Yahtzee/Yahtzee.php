@@ -32,7 +32,16 @@ class Yahtzee
             ['category' => 'Ones', 'maxScore' => 4],
             ['category' => 'Twos', 'maxScore' => 3]
         ];
-        $this->outputUserInterface->printLine(sprintf("%s: %s", $maxScores[0]['category'], $maxScores[0]['maxScore']));
-        $this->outputUserInterface->printLine(sprintf("%s: %s", $maxScores[1]['category'], $maxScores[1]['maxScore']));
+        $this->printCategoryScore($maxScores[0]['category'], $maxScores[0]['maxScore']);
+        $this->printCategoryScore($maxScores[1]['category'], $maxScores[1]['maxScore']);
+    }
+
+    /**
+     * @param string $category
+     * @param int $maxScore
+     */
+    private function printCategoryScore($category, $maxScore)
+    {
+        $this->outputUserInterface->printLine(sprintf("%s: %s", $category, $maxScore));
     }
 }
