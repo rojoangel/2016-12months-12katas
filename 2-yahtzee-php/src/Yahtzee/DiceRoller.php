@@ -31,13 +31,7 @@ class DiceRoller
 
     public function rollAll()
     {
-        $this->rollDice([
-            Dice::D1(),
-            Dice::D2(),
-            Dice::D3(),
-            Dice::D4(),
-            Dice::D5()
-        ]);
+        $this->rollDice(Dice::all());
     }
 
     /**
