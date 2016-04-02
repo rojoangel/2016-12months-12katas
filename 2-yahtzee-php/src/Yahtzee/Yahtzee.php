@@ -14,14 +14,19 @@ class Yahtzee
     /** @var OutputUserInterface */
     private $outputUserInterface;
 
+    /** @var UserInterface */
+    private $userInterface;
+
     /**
      * @param Categories $categories
      * @param OutputUserInterface $outputUserInterface
+     * @param UserInterface $userInterface
      */
-    public function __construct(Categories $categories, OutputUserInterface $outputUserInterface)
+    public function __construct(Categories $categories, OutputUserInterface $outputUserInterface, UserInterface $userInterface)
     {
         $this->categories = $categories;
         $this->outputUserInterface = $outputUserInterface;
+        $this->userInterface = $userInterface;
     }
     
     public function play() {
@@ -42,7 +47,6 @@ class Yahtzee
      */
     private function printCategoryScore($category, $maxScore)
     {
-        $inputOutputUserInterface = new InputOutputUserInterface(new FakeInputUserInterface([]), $this->outputUserInterface);
-        $inputOutputUserInterface->printCategoryMaxScore($category, $maxScore);
+        $this->userInterface->printCategoryMaxScore($category, $maxScore);
     }
 }
