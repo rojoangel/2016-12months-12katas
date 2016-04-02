@@ -15,6 +15,9 @@ class Yahtzee
     /** @var UserInterface */
     private $userInterface;
 
+    /** @var ScoresSummary */
+    private $scoresSummary;
+
     /**
      * @param Categories $categories
      * @param UserInterface $userInterface
@@ -23,14 +26,14 @@ class Yahtzee
     {
         $this->categories = $categories;
         $this->userInterface = $userInterface;
+        $this->scoresSummary = new ScoresSummary();
+
     }
     
     public function play() {
 
         $this->categories->play(self::RERUN_ATTEMPTS);
-        $scoresSummary = new ScoresSummary();
-        
-        $this->printMaxScores($scoresSummary->getMaxScores(), $scoresSummary->getfinalScore());
+        $this->printMaxScores($this->scoresSummary->getMaxScores(), $this->scoresSummary->getfinalScore());
     }
 
     /**
