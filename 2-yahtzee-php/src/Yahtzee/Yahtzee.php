@@ -44,9 +44,6 @@ class Yahtzee
      */
     private function printMaxScores($maxScores)
     {
-        $this->outputUserInterface->printLine("Yahtzee score");
-        foreach ($maxScores as $maxScore) {
-            $this->userInterface->printCategoryMaxScore($maxScore['category'], $maxScore['maxScore']);
-        }
+        $this->userInterface->printMaxScores($maxScores);
     }
 }

@@ -30,4 +30,9 @@ interface UserInterface
      * @param int $maxScore
      */
     function printCategoryMaxScore($category, $maxScore);
+
+    /**
+     * @param array $maxScores
+     */
+    function printMaxScores($maxScores);
 }

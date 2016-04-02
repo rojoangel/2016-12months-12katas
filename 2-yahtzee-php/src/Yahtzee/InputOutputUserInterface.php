@@ -83,4 +83,13 @@ class InputOutputUserInterface implements UserInterface
     {
         $this->output->printLine(sprintf("%s: %s", $category, $maxScore));
     }
+
+    public function printMaxScores($maxScores)
+    {
+        $this->output->printLine("Yahtzee score");
+        foreach ($maxScores as $maxScore) {
+            $this->printCategoryMaxScore($maxScore['category'], $maxScore['maxScore']);
+        }
+    }
+
 }
