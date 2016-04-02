@@ -26,8 +26,7 @@ interface UserInterface
     function requestDiceToReRun($reRunAttempt);
 
     /**
-     * @param array $maxScores
-     * @param int $finalScore
+     * @param ScoresSummary $scoresSummary
      */
-    function printScoresSummary($maxScores, $finalScore);
+    function printScoresSummary(ScoresSummary $scoresSummary);
 }
