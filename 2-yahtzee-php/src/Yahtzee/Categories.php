@@ -42,7 +42,6 @@ class Categories
     public function play($numReRuns)
     {
         foreach (Category::all() as $category) {
-            /** @var Category $category */
             $this->userInterface->printCategory($category);
             $this->diceRoller->rollAll();
             $this->userInterface->printDiceLine($this->diceRoller->lastRollResult());
