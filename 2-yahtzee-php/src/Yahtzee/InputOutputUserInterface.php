@@ -76,6 +76,22 @@ class InputOutputUserInterface implements UserInterface
     }
 
     /**
+     * @param array $maxScores
+     */
+    public function printMaxScores($maxScores)
+    {
+        $this->printMaxScoresHeader();
+        foreach ($maxScores as $maxScore) {
+            $this->printCategoryMaxScore($maxScore['category'], $maxScore['maxScore']);
+        }
+    }
+
+    private function printMaxScoresHeader()
+    {
+        $this->output->printLine("Yahtzee score");
+    }
+
+    /**
      * @param string $category
      * @param int $maxScore
      */
@@ -83,13 +99,4 @@ class InputOutputUserInterface implements UserInterface
     {
         $this->output->printLine(sprintf("%s: %s", $category, $maxScore));
     }
-
-    public function printMaxScores($maxScores)
-    {
-        $this->output->printLine("Yahtzee score");
-        foreach ($maxScores as $maxScore) {
-            $this->printCategoryMaxScore($maxScore['category'], $maxScore['maxScore']);
-        }
-    }
-
 }
