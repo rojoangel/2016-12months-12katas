@@ -7,10 +7,10 @@ namespace Yahtzee;
 class InputOutputUserInterface implements UserInterface
 {
     /** @var InputUserInterface */
-    public $input;
+    private $input;
 
     /** @var OutputUserInterface */
-    public $output;
+    private $output;
 
     /** @var UserInputParser */
     private $userInputParser;
