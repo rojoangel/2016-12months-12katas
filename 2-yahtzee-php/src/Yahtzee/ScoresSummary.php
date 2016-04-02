@@ -18,7 +18,6 @@ class ScoresSummary
         $this->finalScore = 9;
     }
 
-
     /**
      * @return array
      */

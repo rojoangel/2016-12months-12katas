@@ -47,7 +47,9 @@ class Categories
             $this->diceRoller->rollAll();
             $this->userInterface->printDiceLine($this->diceRoller->lastRollResult());
             $this->reRuns->doReRuns($numReRuns);
-            $this->userInterface->printCategoryScore($category, $category->calculateScore($this->diceRoller->lastRollResult()));
+            $categoryScore = $category->calculateScore($this->diceRoller->lastRollResult());
+            $this->scoresSummary->registerScore($category, $categoryScore);
+            $this->userInterface->printCategoryScore($category, $categoryScore);
         }
     }
 
