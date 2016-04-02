@@ -85,7 +85,7 @@ class InputOutputUserInterface implements UserInterface
         foreach ($maxScores as $maxScore) {
             $this->printCategoryMaxScore($maxScore['category'], $maxScore['maxScore']);
         }
-        $this->output->printLine(sprintf("Final score: %s", $finalScore));
+        $this->printFinalScore($finalScore);
     }
 
     private function printMaxScoresHeader()
@@ -100,5 +100,13 @@ class InputOutputUserInterface implements UserInterface
     private function printCategoryMaxScore($category, $maxScore)
     {
         $this->output->printLine(sprintf("%s: %s", $category, $maxScore));
+    }
+
+    /**
+     * @param $finalScore
+     */
+    private function printFinalScore($finalScore)
+    {
+        $this->output->printLine(sprintf("Final score: %s", $finalScore));
     }
 }
