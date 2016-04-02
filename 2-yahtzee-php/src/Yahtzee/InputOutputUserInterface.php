@@ -79,7 +79,7 @@ class InputOutputUserInterface implements UserInterface
      * @param array $maxScores
      * @param int $finalScore
      */
-    public function printMaxScores($maxScores, $finalScore)
+    public function printScoresSummary($maxScores, $finalScore)
     {
         $this->printMaxScoresHeader();
         foreach ($maxScores as $maxScore) {

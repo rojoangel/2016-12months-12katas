@@ -33,15 +33,15 @@ class Yahtzee
     public function play() {
 
         $this->categories->play(self::RERUN_ATTEMPTS);
-        $this->printMaxScores($this->scoresSummary->getMaxScores(), $this->scoresSummary->getfinalScore());
+        $this->printScoresSummary($this->scoresSummary->getMaxScores(), $this->scoresSummary->getfinalScore());
     }
 
     /**
      * @param array $maxScores
      * @param int $finalScore
      */
-    private function printMaxScores($maxScores, $finalScore)
+    private function printScoresSummary($maxScores, $finalScore)
     {
-        $this->userInterface->printMaxScores($maxScores, $finalScore);
+        $this->userInterface->printScoresSummary($maxScores, $finalScore);
     }
 }

@@ -29,5 +29,5 @@ interface UserInterface
      * @param array $maxScores
      * @param int $finalScore
      */
-    function printMaxScores($maxScores, $finalScore);
+    function printScoresSummary($maxScores, $finalScore);
 }
