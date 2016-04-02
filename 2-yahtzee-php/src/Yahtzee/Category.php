@@ -23,6 +23,42 @@ class Category
     }
 
     /**
+     * @return Category
+     */
+    public static function Ones()
+    {
+        return new self('Ones', 1);
+    }
+
+    /**
+     * @return Category
+     */
+    public static function Twos()
+    {
+        return new self('Twos', 2);
+    }
+
+    /**
+     * @return Category
+     */
+    public static function Threes()
+    {
+        return new self('Threes', 3);
+    }
+
+    /**
+     * @return Category[]
+     */
+    public static function all()
+    {
+        return [
+            self::Ones(),
+            self::Twos(),
+            self::Threes()
+        ];
+    }
+
+    /**
      * @return string
      */
     function __toString()
@@ -39,17 +75,5 @@ class Category
         return count(array_filter($dice, function ($die) {
             return $die == $this->value;
         }));
-    }
-
-    /**
-     * @return Category
-     */
-    public static function all()
-    {
-        return [
-            new self('Ones', 1),
-            new self('Twos', 2),
-            new self('Threes', 3)
-        ];
     }
 }

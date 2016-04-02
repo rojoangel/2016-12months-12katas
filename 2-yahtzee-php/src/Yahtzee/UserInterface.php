@@ -24,4 +24,9 @@ interface UserInterface
      * @return array
      */
     function requestDiceToReRun($reRunAttempt);
+
+    /**
+     * @param ScoresSummary $scoresSummary
+     */
+    function printScoresSummary(ScoresSummary $scoresSummary);
 }

@@ -8,17 +8,19 @@ class YahtzeeTest extends \PHPUnit_Framework_TestCase
     public function testGame()
     {
         $inputUserInterface = new FakeInputUserInterface([
-            [1, 2, 4],
-            [2, 4],
-            [2, 5],
-            [3, 4, 5],
-            [1, 2, 3, 4, 5],
-            [1, 2, 4]
+            "D1 D2 D4",
+            "D2 D4",
+            "D2 D5",
+            "D3 D4 D5",
+            "D1 D2 D3 D4 D5",
+            "D1 D2 D4"
         ]);
+        $userInputParser = new UserInputParser();
         $outputUserInterface = new FakeOutputUserInterface();
         $userInterface = new InputOutputUserInterface(
             $inputUserInterface,
-            $outputUserInterface
+            $outputUserInterface,
+            $userInputParser
         );
         $dieRoller = new FakeDieRoller([2, 4, 1, 6, 1,
                                         1, 5 ,2,
@@ -31,8 +33,9 @@ class YahtzeeTest extends \PHPUnit_Framework_TestCase
                                         6, 2, 4]);
         $diceRoller = new DiceRoller($dieRoller);
         $reRuns = new ReRuns($userInterface, $diceRoller);
-        $categories = new Categories($userInterface, $diceRoller, $reRuns);
-        $yahtzee = new Yahtzee($categories, $outputUserInterface);
+        $scoresSummary = new InMemoryScoresSummary();
+        $categories = new Categories($userInterface, $diceRoller, $reRuns, $scoresSummary);
+        $yahtzee = new Yahtzee($categories);
 
         $yahtzee->play();
 
@@ -58,7 +61,11 @@ class YahtzeeTest extends \PHPUnit_Framework_TestCase
             "[2] Dice to re-run:",
             "Dice: D1:6 D2:2 D3:3 D4:4 D5:3",
             "Category Threes score: 2",
-            "Yahtzee score"
+            "Yahtzee score",
+            "Ones: 4",
+            "Twos: 3",
+            "Threes: 2",
+            "Final score: 9"
         ];
         $this->assertEquals($outputLines, $outputUserInterface->output);
     }

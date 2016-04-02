@@ -12,14 +12,22 @@ class InputOutputUserInterface implements UserInterface
     /** @var OutputUserInterface */
     public $output;
 
+    /** @var UserInputParser */
+    private $userInputParser;
+
     /**
      * @param InputUserInterface $input
      * @param OutputUserInterface $output
+     * @param UserInputParser $userInputParser
      */
-    public function __construct(InputUserInterface $input, OutputUserInterface $output)
+    public function __construct(
+        InputUserInterface $input,
+        OutputUserInterface $output,
+        UserInputParser $userInputParser)
     {
         $this->input = $input;
         $this->output = $output;
+        $this->userInputParser = $userInputParser;
     }
 
     /**
@@ -64,7 +72,7 @@ class InputOutputUserInterface implements UserInterface
      */
     private function readDiceToRerun()
     {
-        return $this->input->readDiceToRerun();
+        return $this->userInputParser->parse($this->input->readDiceToRerun());
     }
 
     /**
@@ -75,4 +83,37 @@ class InputOutputUserInterface implements UserInterface
         $this->output->printLine(sprintf("[%s] Dice to re-run:", $reRunAttempt));
     }
 
+    /**
+     * @param ScoresSummary $scoresSummary
+     */
+    public function printScoresSummary(ScoresSummary $scoresSummary)
+    {
+        $this->printMaxScoresHeader();
+        foreach ($scoresSummary->getMaxScores() as $category => $maxScore) {
+            $this->printCategoryMaxScore($category, $maxScore);
+        }
+        $this->printFinalScore($scoresSummary->calculateFinalScore());
+    }
+
+    private function printMaxScoresHeader()
+    {
+        $this->output->printLine("Yahtzee score");
+    }
+
+    /**
+     * @param string $category
+     * @param int $maxScore
+     */
+    private function printCategoryMaxScore($category, $maxScore)
+    {
+        $this->output->printLine(sprintf("%s: %s", $category, $maxScore));
+    }
+
+    /**
+     * @param $finalScore
+     */
+    private function printFinalScore($finalScore)
+    {
+        $this->output->printLine(sprintf("Final score: %s", $finalScore));
+    }
 }
