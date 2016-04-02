@@ -6,13 +6,18 @@ namespace Yahtzee;
 
 class ScoresSummary
 {
-    private $maxScores = [
-        ['category' => 'Ones', 'maxScore' => 4],
-        ['category' => 'Twos', 'maxScore' => 3],
-        ['category' => 'Threes', 'maxScore' => 2]
-    ];
+    /** @var array */
+    private $maxScores;
 
-    private $finalScore = 9;
+    /** @var int */
+    private $finalScore;
+
+    public function __construct()
+    {
+        $this->maxScores = [];
+        $this->finalScore = 9;
+    }
+
 
     /**
      * @return array
@@ -28,5 +33,14 @@ class ScoresSummary
     public function getFinalScore()
     {
         return $this->finalScore;
+    }
+
+    /**
+     * @param Category $category
+     * @param int $categoryScore
+     */
+    public function registerScore(Category $category, $categoryScore)
+    {
+        $this->maxScores[(string) $category] = $categoryScore;
     }
 }
