@@ -31,11 +31,17 @@ class DiceRoller
 
     public function rollAll()
     {
-        $this->rollDice([1, 2, 3, 4, 5]);
+        $this->rollDice([
+            Dice::D1(),
+            Dice::D2(),
+            Dice::D3(),
+            Dice::D4(),
+            Dice::D5()
+        ]);
     }
 
     /**
-     * @param $diceToReRun
+     * @param Dice[] $diceToReRun
      */
     public function reRun($diceToReRun)
     {
@@ -43,12 +49,12 @@ class DiceRoller
     }
 
     /**
-     * @param array $diceToRoll
+     * @param Dice[] $diceToRoll
      */
     private function rollDice($diceToRoll)
     {
         foreach ($diceToRoll as $die) {
-            $this->rollResult[$die - 1] = $this->dieRoller->roll();
+            $this->rollResult[(string) $die] = $this->dieRoller->roll();
         }
     }
 }

@@ -21,7 +21,7 @@ interface UserInterface
 
     /**
      * @param int $reRunAttempt
-     * @return array
+     * @return Dice[]
      */
     function requestDiceToReRun($reRunAttempt);
 

@@ -13,7 +13,7 @@ class UserInputParser
     {
         return array_map(
             function ($token) {
-                return substr($token, 1);
+                return Dice::fromString($token);
             },
             explode(' ', $input)
         );
