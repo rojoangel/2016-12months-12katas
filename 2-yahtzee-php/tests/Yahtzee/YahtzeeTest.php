@@ -8,12 +8,12 @@ class YahtzeeTest extends \PHPUnit_Framework_TestCase
     public function testGame()
     {
         $inputUserInterface = new FakeInputUserInterface([
-            [1, 2, 4],
-            [2, 4],
-            [2, 5],
-            [3, 4, 5],
-            [1, 2, 3, 4, 5],
-            [1, 2, 4]
+            "D1 D2 D4",
+            "D2 D4",
+            "D2 D5",
+            "D3 D4 D5",
+            "D1 D2 D3 D4 D5",
+            "D1 D2 D4"
         ]);
         $outputUserInterface = new FakeOutputUserInterface();
         $userInterface = new InputOutputUserInterface(

@@ -64,7 +64,8 @@ class InputOutputUserInterface implements UserInterface
      */
     private function readDiceToRerun()
     {
-        return $this->input->readDiceToRerun();
+        $userInputParser = new UserInputParser();
+        return $userInputParser->parse($this->input->readDiceToRerun());
     }
 
     /**
