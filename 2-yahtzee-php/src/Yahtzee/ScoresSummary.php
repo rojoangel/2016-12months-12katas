@@ -11,7 +11,7 @@ interface ScoresSummary
     /**
      * @return int
      */
-    function getFinalScore();
+    function calculateFinalScore();
 
     /**
      * @param Category $category

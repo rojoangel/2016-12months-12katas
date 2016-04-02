@@ -25,7 +25,7 @@ class InMemoryScoresSummary implements ScoresSummary
     /**
      * @return int
      */
-    public function getFinalScore()
+    public function calculateFinalScore()
     {
         $finalScore = 0;
         foreach($this->maxScores as $maxScore) {

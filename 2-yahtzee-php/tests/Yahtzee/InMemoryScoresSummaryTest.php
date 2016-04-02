@@ -29,7 +29,7 @@ class InMemoryScoresSummaryTest extends \PHPUnit_Framework_TestCase
         $scoresSummary->registerScore(Category::Twos(), 3);
         $scoresSummary->registerScore(Category::Threes(), 4);
 
-        $this->assertEquals(8, $scoresSummary->getFinalScore());
+        $this->assertEquals(8, $scoresSummary->calculateFinalScore());
     }
 
 

@@ -84,7 +84,7 @@ class InputOutputUserInterface implements UserInterface
         foreach ($scoresSummary->getMaxScores() as $category => $maxScore) {
             $this->printCategoryMaxScore($category, $maxScore);
         }
-        $this->printFinalScore($scoresSummary->getFinalScore());
+        $this->printFinalScore($scoresSummary->calculateFinalScore());
     }
 
     private function printMaxScoresHeader()
