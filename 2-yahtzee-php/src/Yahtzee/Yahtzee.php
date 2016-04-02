@@ -11,21 +11,17 @@ class Yahtzee
     /** @var Categories */
     private $categories;
 
-    /** @var OutputUserInterface */
-    private $outputUserInterface;
 
     /** @var UserInterface */
     private $userInterface;
 
     /**
      * @param Categories $categories
-     * @param OutputUserInterface $outputUserInterface
      * @param UserInterface $userInterface
      */
-    public function __construct(Categories $categories, OutputUserInterface $outputUserInterface, UserInterface $userInterface)
+    public function __construct(Categories $categories, UserInterface $userInterface)
     {
         $this->categories = $categories;
-        $this->outputUserInterface = $outputUserInterface;
         $this->userInterface = $userInterface;
     }
     
