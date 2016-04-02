@@ -32,22 +32,21 @@ class Yahtzee
     public function play() {
 
         $this->categories->play(self::RERUN_ATTEMPTS);
-        $this->outputUserInterface->printLine("Yahtzee score");
         $maxScores = [
             ['category' => 'Ones', 'maxScore' => 4],
             ['category' => 'Twos', 'maxScore' => 3]
         ];
-        foreach ($maxScores as $maxScore) {
-            $this->printCategoryScore($maxScore['category'], $maxScore['maxScore']);
-        }
+        $this->printMaxScores($maxScores);
     }
 
     /**
-     * @param string $category
-     * @param int $maxScore
+     * @param array $maxScores
      */
-    private function printCategoryScore($category, $maxScore)
+    private function printMaxScores($maxScores)
     {
-        $this->userInterface->printCategoryMaxScore($category, $maxScore);
+        $this->outputUserInterface->printLine("Yahtzee score");
+        foreach ($maxScores as $maxScore) {
+            $this->userInterface->printCategoryMaxScore($maxScore['category'], $maxScore['maxScore']);
+        }
     }
 }
