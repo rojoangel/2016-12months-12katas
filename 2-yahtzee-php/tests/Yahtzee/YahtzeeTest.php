@@ -59,7 +59,8 @@ class YahtzeeTest extends \PHPUnit_Framework_TestCase
             "Dice: D1:6 D2:2 D3:3 D4:4 D5:3",
             "Category Threes score: 2",
             "Yahtzee score",
-            "Ones: 4"
+            "Ones: 4",
+            "Twos: 3"
         ];
         $this->assertEquals($outputLines, $outputUserInterface->output);
     }

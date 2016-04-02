@@ -29,8 +29,10 @@ class Yahtzee
         $this->categories->play(self::RERUN_ATTEMPTS);
         $this->outputUserInterface->printLine("Yahtzee score");
         $maxScores = [
-            "Ones", 4
+            ['category' => 'Ones', 'maxScore' => 4],
+            ['category' => 'Twos', 'maxScore' => 3]
         ];
-        $this->outputUserInterface->printLine(sprintf("%s: %s", $maxScores[0], $maxScores[1]));
+        $this->outputUserInterface->printLine(sprintf("%s: %s", $maxScores[0]['category'], $maxScores[0]['maxScore']));
+        $this->outputUserInterface->printLine(sprintf("%s: %s", $maxScores[1]['category'], $maxScores[1]['maxScore']));
     }
 }
