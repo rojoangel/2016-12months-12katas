@@ -75,4 +75,12 @@ class InputOutputUserInterface implements UserInterface
         $this->output->printLine(sprintf("[%s] Dice to re-run:", $reRunAttempt));
     }
 
+    /**
+     * @param string $category
+     * @param int $maxScore
+     */
+    public function printCategoryMaxScore($category, $maxScore)
+    {
+        $this->output->printLine(sprintf("%s: %s", $category, $maxScore));
+    }
 }

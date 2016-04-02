@@ -42,6 +42,7 @@ class Yahtzee
      */
     private function printCategoryScore($category, $maxScore)
     {
-        $this->outputUserInterface->printLine(sprintf("%s: %s", $category, $maxScore));
+        $inputOutputUserInterface = new InputOutputUserInterface(new FakeInputUserInterface([]), $this->outputUserInterface);
+        $inputOutputUserInterface->printCategoryMaxScore($category, $maxScore);
     }
 }
