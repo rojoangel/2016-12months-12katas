@@ -1,6 +1,7 @@
 package yahtzee;
 
 
+import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -20,19 +21,15 @@ public class CategoryRequesterTest {
         UserInputReader userInputReader = mock(UserInputReader.class);
         when(userInputReader.readLine()).thenReturn(
             "1");
-
         CategoryRequester categoryRequester = new CategoryRequester(notifier, userInputReader);
 
         categoryRequester.requestCategory();
 
-
-        List<String> outputLines = new ArrayList<String>();
-        outputLines.add("Available categories:");
-        outputLines.add("[1] Ones");
-        outputLines.add("[2] Twos");
-        outputLines.add("[3] Threes");
-        outputLines.add("Category to add points to: 1");
+        assertThat(console.nextLine(), CoreMatchers.is("Available categories:"));
+        assertThat(console.nextLine(), CoreMatchers.is("[1] Ones"));
+        assertThat(console.nextLine(), CoreMatchers.is("[2] Twos"));
+        assertThat(console.nextLine(), CoreMatchers.is("[3] Threes"));
+        assertThat(console.nextLine(), CoreMatchers.is("Category to add points to: 1"));
         assertThat(categoryRequester.chosenCategory(), is(Category.Ones));
-        assertEquals(outputLines, console.getOutput());
     }
 }

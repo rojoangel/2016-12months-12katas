@@ -20,4 +20,10 @@ public class FakeConsole implements Console {
     public List<String> getOutput() {
         return lines;
     }
+
+    public String nextLine() {
+       String line = lines.get(0);
+        lines = lines.subList(1, lines.size());
+        return line;
+    }
 }
