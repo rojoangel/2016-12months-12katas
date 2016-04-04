@@ -19,10 +19,5 @@ public class Yahtzee {
 
     public void play() {
         this.gameFlow.play(NUM_RERUNS);
-        summarizeScores();
-    }
-
-    private void summarizeScores() {
-        this.notifier.notifyGameScore(scoresHistory.maxScoresByCategory(), scoresHistory.finalScore());
     }
 }

@@ -35,8 +35,8 @@ public class Round1YahtzeeTest {
         DiceRoller diceRoller = new DiceRoller(dieRoller);
         ScoresHistory scoresHistory = new InMemoryScoresHistory();
         Reruns reruns = new Reruns(notifier, userInputReader, diceRoller);
-        CategoriesGameFlow categories = new CategoriesGameFlow(notifier, diceRoller, scoresHistory, reruns);
-        Yahtzee yahtzee = new Yahtzee(notifier, scoresHistory, categories);
+        CategoriesGameFlow gameFlow = new CategoriesGameFlow(notifier, diceRoller, scoresHistory, reruns);
+        Yahtzee yahtzee = new Yahtzee(notifier, scoresHistory, gameFlow);
         yahtzee.play();
 
         List<String> outputLines = new ArrayList<String>();
@@ -68,5 +68,4 @@ public class Round1YahtzeeTest {
         outputLines.add("Final score: 9");
         assertEquals(outputLines, console.getOutput());
     }
-
 }

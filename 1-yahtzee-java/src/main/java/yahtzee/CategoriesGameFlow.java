@@ -27,6 +27,12 @@ public class CategoriesGameFlow implements GameFlow {
             this.scoresHistory.annotateScore(category, score);
             this.notifier.notifyCategoryScore(category, score);
         }
+
+        summarizeScores();
+    }
+
+    private void summarizeScores() {
+        this.notifier.notifyGameScore(scoresHistory.maxScoresByCategory(), scoresHistory.finalScore());
     }
 
     private void rollAll() {
