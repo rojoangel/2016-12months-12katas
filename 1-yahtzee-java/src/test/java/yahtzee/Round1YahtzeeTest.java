@@ -9,10 +9,10 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class YahtzeeTest {
+public class Round1YahtzeeTest {
 
     @Test
-    public void testGame(){
+    public void testRoundOneGame(){
         FakeConsole console = new FakeConsole();
         ConsoleNotifier notifier = new ConsoleNotifier(console);
         DieRoller dieRoller = mock(DieRoller.class);
@@ -35,7 +35,7 @@ public class YahtzeeTest {
         DiceRoller diceRoller = new DiceRoller(dieRoller);
         ScoresHistory scoresHistory = new InMemoryScoresHistory();
         Reruns reruns = new Reruns(notifier, userInputReader, diceRoller);
-        Categories categories = new Categories(notifier, diceRoller, scoresHistory, reruns);
+        CategoriesGameFlow categories = new CategoriesGameFlow(notifier, diceRoller, scoresHistory, reruns);
         Yahtzee yahtzee = new Yahtzee(notifier, scoresHistory, categories);
         yahtzee.play();
 

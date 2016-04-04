@@ -1,12 +1,12 @@
 package yahtzee;
 
-public class Categories {
+public class CategoriesGameFlow implements GameFlow {
     private ConsoleNotifier notifier;
     private ScoresHistory scoresHistory;
     private DiceRoller diceRoller;
     private Reruns reruns;
 
-    public Categories(
+    public CategoriesGameFlow(
             ConsoleNotifier notifier,
             DiceRoller diceRoller,
             ScoresHistory scoresHistory,

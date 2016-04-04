@@ -12,7 +12,7 @@ public class CommandLineYahtzee {
             DiceRoller diceRoller = new DiceRoller(dieRoller);
             UserInputReader userInputReader = new CommandLineUserInputReader();
             Reruns reruns = new Reruns(notifier, userInputReader, diceRoller);
-            Categories categories = new Categories(notifier, diceRoller, scoresHistory, reruns);
+            CategoriesGameFlow categories = new CategoriesGameFlow(notifier, diceRoller, scoresHistory, reruns);
             this.yahtzee = new Yahtzee(notifier, scoresHistory, categories);
     }
 
