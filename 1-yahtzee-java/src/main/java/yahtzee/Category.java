@@ -22,4 +22,13 @@ public enum Category {
         }
         return score;
     }
+
+    public static Category create(String category) {
+        if(category.equals("1")) {
+            return Category.Ones;
+        } else {
+            throw new RuntimeException("Unknown Category!");
+        }
+
+    }
 }

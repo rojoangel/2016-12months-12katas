@@ -23,11 +23,15 @@ public class Round2YahtzeeTest {
         UserInputReader userInputReader = mock(UserInputReader.class);
         when(userInputReader.readLine()).thenReturn(
             "D1 D2 D4",
-            "D2 D4");
+            "D2 D4",
+            "1");
         DiceRoller diceRoller = new DiceRoller(dieRoller);
         ScoresHistory scoresHistory = new InMemoryScoresHistory();
         Reruns reruns = new Reruns(notifier, userInputReader, diceRoller);
-        GameFlow gameFlow = new CategoryChoiceGameFlow(notifier, diceRoller, scoresHistory, reruns);
+        CategoryRequester categoryRequester = new CategoryRequester(notifier, userInputReader);
+        GameFlow gameFlow = new CategoryChoiceGameFlow(
+            notifier, diceRoller, scoresHistory, reruns, categoryRequester
+        );
         Yahtzee yahtzee = new Yahtzee(notifier, scoresHistory, gameFlow);
         yahtzee.play();
 
@@ -41,6 +45,7 @@ public class Round2YahtzeeTest {
         outputLines.add("[1] Ones");
         outputLines.add("[2] Twos");
         outputLines.add("[3] Threes");
+        outputLines.add("Category to add points to: 1");
 
 
         assertEquals(outputLines, console.getOutput());

@@ -17,36 +17,44 @@ public class ConsoleNotifier {
                     .append(":")
                     .append(rolledDice.get(die));
         }
-        this.console.print(formattedDice.toString());
+        this.console.println(formattedDice.toString());
     }
 
     public void notifyUserToIntroduceDiceToRerun(int rerunsSoFar) {
-        this.console.print("[" + (rerunsSoFar + 1) + "] Dice to re-run:");
+        this.console.println("[" + (rerunsSoFar + 1) + "] Dice to re-run:");
 
     }
 
     public void notifyCurrentCategory(Category category) {
-        this.console.print("Category: " + category);
+        this.console.println("Category: " + category);
     }
 
     public void notifyCategoryScore(Category category, int score) {
-        this.console.print("Category " + category + " score: " + score);
+        this.console.println("Category " + category + " score: " + score);
     }
 
     public void notifyGameScore(Map<Category, Integer> maxScoresByCategory, int finalScore) {
-        this.console.print("Yahtzee score");
+        this.console.println("Yahtzee score");
         for (Category category : Category.values()) {
-            this.console.print(category + ": " + maxScoresByCategory.get(category));
+            this.console.println(category + ": " + maxScoresByCategory.get(category));
 
         }
-        this.console.print("Final score: " + finalScore);
+        this.console.println("Final score: " + finalScore);
 
     }
 
     public void notifyAvailableCategories() {
-        this.console.print("Available categories:");
-        this.console.print("[1] Ones");
-        this.console.print("[2] Twos");
-        this.console.print("[3] Threes");
+        this.console.println("Available categories:");
+        this.console.println("[1] Ones");
+        this.console.println("[2] Twos");
+        this.console.println("[3] Threes");
+    }
+
+    public void notifyUserToChooseCategory() {
+        this.console.print("Category to add points to: ");
+    }
+
+    public void notifyChosenCategory(String chosenCategory) {
+        this.console.println(chosenCategory);
     }
 }
