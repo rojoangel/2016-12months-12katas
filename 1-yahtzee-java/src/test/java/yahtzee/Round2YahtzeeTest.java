@@ -37,6 +37,11 @@ public class Round2YahtzeeTest {
         outputLines.add("Dice: D1:1 D2:5 D3:1 D4:2 D5:1");
         outputLines.add("[2] Dice to re-run:");
         outputLines.add("Dice: D1:1 D2:1 D3:1 D4:5 D5:1");
+        outputLines.add("Available categories:");
+        outputLines.add("[1] Ones");
+        outputLines.add("[2] Twos");
+        outputLines.add("[3] Threes");
+
 
         assertEquals(outputLines, console.getOutput());
     }

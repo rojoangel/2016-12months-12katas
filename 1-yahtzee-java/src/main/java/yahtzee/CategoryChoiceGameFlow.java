@@ -17,6 +17,7 @@ public class CategoryChoiceGameFlow implements GameFlow {
     public void play(int numReruns) {
         rollAll();
         this.reruns.doReruns(numReruns);
+        this.notifier.notifyAvailableCategories();
     }
 
     private void rollAll() {

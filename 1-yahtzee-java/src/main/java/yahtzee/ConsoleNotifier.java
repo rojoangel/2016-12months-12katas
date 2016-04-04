@@ -42,4 +42,11 @@ public class ConsoleNotifier {
         this.console.print("Final score: " + finalScore);
 
     }
+
+    public void notifyAvailableCategories() {
+        this.console.print("Available categories:");
+        this.console.print("[1] Ones");
+        this.console.print("[2] Twos");
+        this.console.print("[3] Threes");
+    }
 }
