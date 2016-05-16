@@ -1,3 +1,6 @@
 [submodule "3-brownish-greenfield-gilded-rose-kata-java"]
 	path = 3-brownish-greenfield-gilded-rose-kata-java
 	url = https://github.com/rojoangel/brownish-greenfield-gilded-rose-kata-java
+[submodule "4-smelly-mars-rover-movement-code-refactoring-java"]
+	path = 4-smelly-mars-rover-movement-code-refactoring-java
+	url = https://github.com/rojoangel/SmellyMarsRoverMovementCodeRefactoring
