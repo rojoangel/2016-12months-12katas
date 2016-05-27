@@ -1,12 +1,12 @@
 package yahtzee;
 
-public class Categories {
+public class CategoriesGameFlow implements GameFlow {
     private ConsoleNotifier notifier;
     private ScoresHistory scoresHistory;
     private DiceRoller diceRoller;
     private Reruns reruns;
 
-    public Categories(
+    public CategoriesGameFlow(
             ConsoleNotifier notifier,
             DiceRoller diceRoller,
             ScoresHistory scoresHistory,
@@ -27,6 +27,12 @@ public class Categories {
             this.scoresHistory.annotateScore(category, score);
             this.notifier.notifyCategoryScore(category, score);
         }
+
+        summarizeScores();
+    }
+
+    private void summarizeScores() {
+        this.notifier.notifyGameScore(scoresHistory.maxScoresByCategory(), scoresHistory.finalScore());
     }
 
     private void rollAll() {
