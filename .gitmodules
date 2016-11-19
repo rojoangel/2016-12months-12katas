@@ -13,8 +13,8 @@
 [submodule "07-kata-lights-out-clojure"]
 	path = 07-kata-lights-out-clojure
 	url = https://github.com/rojoangel/kata-lights-out-reagent.git
-[submodule "8-device-driver-kata"]
-	path = 8-device-driver-kata
+[submodule "08-device-driver-kata"]
+	path = 08-device-driver-kata
 	url = https://github.com/rojoangel/Device-Driver-Kata.git
 [submodule "9-varint-kata-python"]
 	path = 9-varint-kata-python
