@@ -10,8 +10,8 @@
 [submodule "06-parrot-refactoring-kata"]
 	path = 06-parrot-refactoring-kata
 	url = https://github.com/rojoangel/Parrot-Refactoring-Kata.git
-[submodule "7-kata-lights-out-clojure"]
-	path = 7-kata-lights-out-clojure
+[submodule "07-kata-lights-out-clojure"]
+	path = 07-kata-lights-out-clojure
 	url = https://github.com/rojoangel/kata-lights-out-reagent.git
 [submodule "8-device-driver-kata"]
 	path = 8-device-driver-kata
