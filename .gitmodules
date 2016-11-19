@@ -17,7 +17,7 @@
 	path = 08-device-driver-kata
 	url = https://github.com/rojoangel/Device-Driver-Kata.git
 [submodule "9-varint-kata-python"]
-	path = 9-varint-kata-python
+	path = 09-varint-kata-python
 	url = https://github.com/rojoangel/varint-kata-python.git
 [submodule "10-varint-kata-haskell"]
 	path = 10-varint-kata-haskell
