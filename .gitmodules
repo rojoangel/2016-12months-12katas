@@ -4,8 +4,8 @@
 [submodule "04-smelly-mars-rover-movement-code-refactoring-java"]
 	path = 04-smelly-mars-rover-movement-code-refactoring-java
 	url = https://github.com/rojoangel/SmellyMarsRoverMovementCodeRefactoring
-[submodule "5-ohce-kata-php"]
-	path = 5-ohce-kata-php
+[submodule "05-ohce-kata-php"]
+	path = 05-ohce-kata-php
 	url = https://github.com/rojoangel/ohce-kata-php.git
 [submodule "6-parrot-refactoring-kata"]
 	path = 6-parrot-refactoring-kata
