@@ -4,3 +4,27 @@
 [submodule "4-smelly-mars-rover-movement-code-refactoring-java"]
 	path = 4-smelly-mars-rover-movement-code-refactoring-java
 	url = https://github.com/rojoangel/SmellyMarsRoverMovementCodeRefactoring
+[submodule "5-ohce-kata-php"]
+	path = 5-ohce-kata-php
+	url = https://github.com/rojoangel/ohce-kata-php.git
+[submodule "6-parrot-refactoring-kata"]
+	path = 6-parrot-refactoring-kata
+	url = https://github.com/rojoangel/Parrot-Refactoring-Kata.git
+[submodule "7-kata-lights-out-clojure"]
+	path = 7-kata-lights-out-clojure
+	url = https://github.com/rojoangel/kata-lights-out-reagent.git
+[submodule "8-device-driver-kata"]
+	path = 8-device-driver-kata
+	url = https://github.com/rojoangel/Device-Driver-Kata.git
+[submodule "9-varint-kata-python"]
+	path = 9-varint-kata-python
+	url = https://github.com/rojoangel/varint-kata-python.git
+[submodule "10-varint-kata-haskell"]
+	path = 10-varint-kata-haskell
+	url = git@github.com:rojoangel/varint-kata-haskell.git
+[submodule "11-coffee-machine-project-java"]
+	path = 11-coffee-machine-project-java
+	url = git@github.com:rojoangel/coffee-machine-project-java.git
+[submodule "12-scrabble-sets-kata-haskell"]
+	path = 12-scrabble-sets-kata-haskell
+	url = git@github.com:rojoangel/scrabble-sets-kata-haskell.git
