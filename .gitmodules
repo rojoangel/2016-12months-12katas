@@ -7,8 +7,8 @@
 [submodule "05-ohce-kata-php"]
 	path = 05-ohce-kata-php
 	url = https://github.com/rojoangel/ohce-kata-php.git
-[submodule "6-parrot-refactoring-kata"]
-	path = 6-parrot-refactoring-kata
+[submodule "06-parrot-refactoring-kata"]
+	path = 06-parrot-refactoring-kata
 	url = https://github.com/rojoangel/Parrot-Refactoring-Kata.git
 [submodule "7-kata-lights-out-clojure"]
 	path = 7-kata-lights-out-clojure
